@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS `bazalotnisko`.`logi`;
 DROP TABLE IF EXISTS `bazalotnisko`.`bilety`;
 DROP TABLE IF EXISTS `bazalotnisko`.`pasazerowie`;
 DROP TABLE IF EXISTS `bazalotnisko`.`samoloty`;
+DROP TABLE IF EXISTS `bazalotnisko`.`pracownicy`;
 
 /*CREATE TABLE IF NOT EXISTS `bazalotnisko`.`logi` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `bazalotnisko`.`pasazerowie` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `imie` VARCHAR(15) NOT NULL,
   `nazwisko` VARCHAR(15) NOT NULL,
-  `data_urodzenia` VARCHAR(10) NOT NULL DEFAULT NULL,
+  `data_urodzenia` VARCHAR(10) NOT NULL,
   `adres` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -44,6 +45,15 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `bazalotnisko`.`samoloty` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `model` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `bazalotnisko`.`pracownicy` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `imie` VARCHAR(15) NOT NULL,
+  `nazwisko` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
