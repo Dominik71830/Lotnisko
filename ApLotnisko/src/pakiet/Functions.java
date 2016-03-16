@@ -22,10 +22,13 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import klasy.*;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -126,6 +129,32 @@ public List<Pracownik> getAllPracownicy() throws SQLException {
     public boolean compare(String s1, String s2){
     return(s1.equals(s2) ? true : false);
 }
+
+    void fillJTableWithBilety(JTable jTableBilety) throws SQLException {
+
+        Statement myStmt = myConn.createStatement();
+        ResultSet myRs = myStmt.executeQuery("SELECT * FROM bilety");
+        jTableBilety.setModel(DbUtils.resultSetToTableModel(myRs));
+    }
+
+    void changeColumnNames(JTable jTableBilety) {
+        TableColumnModel tcm = jTableBilety.getColumnModel();
+                //tcm.getColumn(3).setHeaderValue("Data urodzenia"); // zmiana nazwy kolumny
+        
+            tcm.removeColumn(tcm.getColumn(0)); // usuwanie kolumn
+        
+        
+            tcm.getColumn(0).setHeaderValue("Numer lotu");
+            tcm.getColumn(1).setHeaderValue("Cena");
+            tcm.getColumn(2).setHeaderValue("Data odlotu");
+            tcm.getColumn(3).setHeaderValue("Data wystawienia biletu");
+            tcm.getColumn(4).setHeaderValue("Miejce podróży");
+            tcm.getColumn(5).setHeaderValue("Imię pasażera");
+            tcm.getColumn(6).setHeaderValue("Nazwisko pasażera");
+            tcm.getColumn(7).setHeaderValue("Model samolotu");
+            
+            
+    }
     
     
     
