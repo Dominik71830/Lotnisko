@@ -87,7 +87,8 @@ private Pracownik convertRowToPracownik(ResultSet _myRs) throws SQLException {
         int id = _myRs.getInt("id");
         String imie = _myRs.getString("imie");
         String nazwisko = _myRs.getString("nazwisko");
-        Pracownik temp = new Pracownik(id, imie, nazwisko);
+        String haslo = _myRs.getString("haslo");
+        Pracownik temp = new Pracownik(id, imie, nazwisko,haslo);
         return temp;
     }
 
@@ -122,4 +123,15 @@ public List<Pracownik> getAllPracownicy() throws SQLException {
         }
     }
 
+    public boolean compare(String s1, String s2){
+    return(s1.equals(s2) ? true : false);
+}
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import klasy.Pracownik;
 
 /**
@@ -30,6 +31,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() throws SQLException, IOException {
         initComponents();
         f = new Functions();
+        jPanelLogowanie.setVisible(false);
+        jPanelGlowny.setVisible(false);
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         
@@ -47,8 +50,28 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelLogowanie = new javax.swing.JPanel();
         jComboBoxPracownik = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldHaslo = new javax.swing.JTextField();
+        jButtonZaloguj = new javax.swing.JButton();
+        jPanelGlowny = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        //jPanelLogowanie.setVisible(false);
+
+        jLabel1.setText("Hasło:");
+
+        jButtonZaloguj.setText("Zaloguj");
+        jButtonZaloguj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZalogujActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLogowanieLayout = new javax.swing.GroupLayout(jPanelLogowanie);
         jPanelLogowanie.setLayout(jPanelLogowanieLayout);
@@ -56,30 +79,123 @@ public class GUI extends javax.swing.JFrame {
             jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLogowanieLayout.createSequentialGroup()
+                        .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelLogowanieLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldHaslo)))
+                        .addContainerGap(204, Short.MAX_VALUE))
+                    .addGroup(jPanelLogowanieLayout.createSequentialGroup()
+                        .addComponent(jButtonZaloguj)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelLogowanieLayout.setVerticalGroup(
             jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldHaslo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(jButtonZaloguj)
+                .addContainerGap())
         );
+
+        javax.swing.GroupLayout jPanelGlownyLayout = new javax.swing.GroupLayout(jPanelGlowny);
+        jPanelGlowny.setLayout(jPanelGlownyLayout);
+        jPanelGlownyLayout.setHorizontalGroup(
+            jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanelGlownyLayout.setVerticalGroup(
+            jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem1.setText("Zaloguj");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem2.setText("Wyloguj");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelLogowanie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelLogowanie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelGlowny, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelLogowanie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelLogowanie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelGlowny, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonZalogujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZalogujActionPerformed
+        
+        try {
+            Pracownik p = (Pracownik) jComboBoxPracownik.getSelectedItem();
+            String haslo = jTextFieldHaslo.getText();
+            String encryptedPassword = f.encrypt(haslo);
+            //if(haslo.equals("")) throw new Exception();
+            String hasloPracownika = p.getHaslo();
+            
+            if(f.compare(encryptedPassword, hasloPracownika)){
+                System.out.println("Zalogowano " + p);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Złe hasło");
+            }
+            
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Złe hasło");
+           Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        //JOptionPane.showMessageDialog(rootPane,p + haslo);
+    }//GEN-LAST:event_jButtonZalogujActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        jPanelLogowanie.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //Wszystkie panele zamknąć
+        jPanelGlowny.setVisible(false);
+        jPanelLogowanie.setVisible(false);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,7 +244,16 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonZaloguj;
     private static javax.swing.JComboBox jComboBoxPracownik;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanelGlowny;
     private javax.swing.JPanel jPanelLogowanie;
+    private javax.swing.JTextField jTextFieldHaslo;
     // End of variables declaration//GEN-END:variables
 }

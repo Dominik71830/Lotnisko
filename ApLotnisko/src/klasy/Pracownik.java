@@ -13,11 +13,13 @@ public class Pracownik {
     private int id;
     private String imie;
     private String nazwisko;
+    private String haslo;
 
-    public Pracownik(int id, String imie, String nazwisko) {
+    public Pracownik(int id, String imie, String nazwisko,String haslo) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
+        this.haslo = haslo;
     }
 
     public int getId() {
@@ -48,6 +50,15 @@ public class Pracownik {
     public String toString() {
         return imie + ' ' + nazwisko;
     }
+
+    public String getHaslo() {
+        return haslo;
+    }
+
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
+    }
+    
     
     
     
