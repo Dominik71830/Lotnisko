@@ -21,9 +21,9 @@ DEFAULT CHARACTER SET = utf8;*/
 CREATE TABLE IF NOT EXISTS `bazalotnisko`.`bilety` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nr_lotu` VARCHAR(4) NOT NULL,
-  `id_samolotu` INT(11) NOT NULL REFERENCES bazalotnisko.samoloty(ID),
-  `id_pasazera` INT(11) NOT NULL REFERENCES bazalotnisko.pasazerowie(ID),
-  `id_pracownika` INT(11) NOT NULL REFERENCES bazalotnisko.pracownicy(ID),
+  #`id_samolotu` INT(11) NOT NULL REFERENCES bazalotnisko.samoloty(ID),
+  #`id_pasazera` INT(11) NOT NULL REFERENCES bazalotnisko.pasazerowie(ID),
+  #`id_pracownika` INT(11) NOT NULL REFERENCES bazalotnisko.pracownicy(ID),
   `cena` DOUBLE NOT NULL,
   `data_lotu` VARCHAR(10) NOT NULL,
   `data_wystawienia_biletu` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -88,7 +88,7 @@ insert into pasazerowie (id,imie,nazwisko,data_urodzenia,adres)
 values (2,'Sarah','Collins','1987-04-18','Warszawa');
 */
 
-insert into bilety (id,nr_lotu,id_maszyny,id_pasazera,id_pracownika,cena,data_lotu,data_wystawienia_biletu,cel,imie_pasazera,nazwisko_pasazera,model_samolotu)
-values (1,1111,1,1,1,2000,'2016-05-10','2015-12-14 17:04:18','Moskwa','John','Smith','Boeing 777');
-insert into bilety (id,nr_lotu,id_maszyny,id_pasazera,id_pracownika,cena,data_lotu,data_wystawienia_biletu,cel,imie_pasazera,nazwisko_pasazera,model_samolotu)
-values (2,2222,2,2,2,3000,'2016-04-11','2010-01-01 17:04:18','Egipt','Sarah','Collins','Antonov 225');
+insert into bilety (id,nr_lotu,/*id_samolotu,id_pasazera,id_pracownika,*/cena,data_lotu,data_wystawienia_biletu,cel,imie_pasazera,nazwisko_pasazera,model_samolotu)
+values (1,1111,/*1,1,1,*/2000,'2016-05-10','2015-12-14 17:04:18','Moskwa','John','Smith','Boeing 777');
+insert into bilety (id,nr_lotu,/*id_samolotu,id_pasazera,id_pracownika,*/cena,data_lotu,data_wystawienia_biletu,cel,imie_pasazera,nazwisko_pasazera,model_samolotu)
+values (2,2222,/*2,2,2,*/3000,'2016-04-11','2010-01-01 17:04:18','Egipt','Sarah','Collins','Antonov 225');
