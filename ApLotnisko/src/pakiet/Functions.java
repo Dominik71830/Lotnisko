@@ -10,14 +10,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.Key;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
+import klasy.*;
 
 /**
  *
@@ -75,7 +83,43 @@ private static Key generateKey() throws Exception {
     return key;
 }
 
+private Pracownik convertRowToPracownik(ResultSet _myRs) throws SQLException {
+        int id = _myRs.getInt("id");
+        String imie = _myRs.getString("imie");
+        String nazwisko = _myRs.getString("nazwisko");
+        Pracownik temp = new Pracownik(id, imie, nazwisko);
+        return temp;
+    }
 
+public List<Pracownik> getAllPracownicy() throws SQLException {
+	List<Pracownik> lista = new ArrayList<Pracownik>();
+	
+	Statement myStmt = null;
+	ResultSet myRs = null;
+	
+	try{
+		myStmt = myConn.createStatement();
+		myRs = myStmt.executeQuery("select * from pracownicy");
+		
+		while(myRs.next()){
+			Pracownik temp = convertRowToPracownik(myRs);
+			lista.add(temp);
+		}
+	return lista;
+	}
+	finally{
+		myStmt.close();
+                myRs.close();
+	}
+}
 
+    void fillJComboboxWithPracownik(JComboBox jComboBoxPracownik) throws SQLException {
+        List<Pracownik> listaPracownikow = new ArrayList<Pracownik>();
+        listaPracownikow = getAllPracownicy();
+        
+        for(Pracownik p : listaPracownikow){
+           jComboBoxPracownik.addItem(p);
+        }
+    }
 
 }

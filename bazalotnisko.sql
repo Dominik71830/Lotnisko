@@ -1,6 +1,6 @@
 DROP SCHEMA IF EXISTS `bazalotniso` ;
 CREATE SCHEMA IF NOT EXISTS `bazalotnisko` DEFAULT CHARACTER SET utf8 ;
-USE `tempbaza` ;
+USE `bazalotnisko` ;
 
 DROP TABLE IF EXISTS `bazalotnisko`.`logi`;
 DROP TABLE IF EXISTS `bazalotnisko`.`bilety`;
@@ -54,7 +54,12 @@ CREATE TABLE IF NOT EXISTS `bazalotnisko`.`pracownicy` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `imie` VARCHAR(15) NOT NULL,
   `nazwisko` VARCHAR(15) NOT NULL,
+  `haslo` varchar(100) not null,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
+
+insert into pracownicy (id,imie,nazwisko,haslo) values (1,'Jan','Kowalski','g3AkO8OQ4/xlCNAUBCyF6w==');
+insert into pracownicy (id,imie,nazwisko,haslo) values (2,'Adam','Nowak','g3AkO8OQ4/xlCNAUBCyF6w==');
+insert into pracownicy (id,imie,nazwisko,haslo) values (3,'Anna','Nowakowska','g3AkO8OQ4/xlCNAUBCyF6w==');

@@ -7,8 +7,13 @@ package pakiet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
+import klasy.Pracownik;
 
 /**
  *
@@ -20,10 +25,15 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     
-    Functions f;
+    static Functions f;
+    //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
     public GUI() throws SQLException, IOException {
         initComponents();
         f = new Functions();
+        
+        f.fillJComboboxWithPracownik(jComboBoxPracownik);
+        
+        
     }
 
     /**
@@ -36,11 +46,9 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelLogowanie = new javax.swing.JPanel();
-        jComboBoxUser = new javax.swing.JComboBox();
+        jComboBoxPracownik = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jComboBoxUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanelLogowanieLayout = new javax.swing.GroupLayout(jPanelLogowanie);
         jPanelLogowanie.setLayout(jPanelLogowanieLayout);
@@ -48,14 +56,14 @@ public class GUI extends javax.swing.JFrame {
             jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBoxUser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(204, Short.MAX_VALUE))
         );
         jPanelLogowanieLayout.setVerticalGroup(
             jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBoxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(267, Short.MAX_VALUE))
         );
 
@@ -105,6 +113,8 @@ public class GUI extends javax.swing.JFrame {
             public void run() {
                 try {
                     new GUI().setVisible(true);
+                    
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -112,12 +122,13 @@ public class GUI extends javax.swing.JFrame {
                 }
                 
                 
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBoxUser;
+    private static javax.swing.JComboBox jComboBoxPracownik;
     private javax.swing.JPanel jPanelLogowanie;
     // End of variables declaration//GEN-END:variables
 }
