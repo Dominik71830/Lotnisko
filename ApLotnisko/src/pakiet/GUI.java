@@ -5,6 +5,7 @@
  */
 package pakiet;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,10 +37,11 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         f = new Functions();
         jPanelLogowanie.setVisible(false);
-        //jPanelGlowny.setVisible(false);
+        jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
+        jButtonDodajPracownika.setVisible(false);
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         
@@ -65,6 +67,7 @@ public class GUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButtonDodajPracownika = new javax.swing.JButton();
         jPanelBilety = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableBilety = new javax.swing.JTable();
@@ -81,11 +84,12 @@ public class GUI extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanelMapa = new javax.swing.JPanel();
         jLabelMapa = new javax.swing.JLabel();
+        jLabelMiejsce = new javax.swing.JLabel();
+        jLabelCena = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -116,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldHaslo)))
-                        .addContainerGap(547, Short.MAX_VALUE))
+                        .addContainerGap(604, Short.MAX_VALUE))
                     .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                         .addComponent(jButtonZaloguj)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -130,7 +134,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldHaslo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, Short.MAX_VALUE)
                 .addComponent(jButtonZaloguj)
                 .addContainerGap())
         );
@@ -153,6 +157,9 @@ public class GUI extends javax.swing.JFrame {
 
         jButton4.setText("Przeglądaj listę samolotów");
 
+        jButtonDodajPracownika.setText("Dodaj pracownika");
+        //setVisible(false);
+
         javax.swing.GroupLayout jPanelGlownyLayout = new javax.swing.GroupLayout(jPanelGlowny);
         jPanelGlowny.setLayout(jPanelGlownyLayout);
         jPanelGlownyLayout.setHorizontalGroup(
@@ -160,13 +167,16 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanelGlownyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addGap(70, 70, 70)
-                .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2))
-                .addContainerGap(387, Short.MAX_VALUE))
+                    .addGroup(jPanelGlownyLayout.createSequentialGroup()
+                        .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(jButton3))
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(jButton2)))
+                    .addComponent(jButtonDodajPracownika))
+                .addContainerGap(446, Short.MAX_VALUE))
         );
         jPanelGlownyLayout.setVerticalGroup(
             jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +189,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(jButtonDodajPracownika)
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         jTableBilety.setModel(new javax.swing.table.DefaultTableModel(
@@ -200,12 +212,12 @@ public class GUI extends javax.swing.JFrame {
         jPanelBiletyLayout.setHorizontalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBiletyLayout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+                .addContainerGap(226, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelBiletyLayout.setVerticalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
         );
 
         jLabel2.setText("Imię: ");
@@ -251,7 +263,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldRRRR, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton5))
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
         jPanelRejestracjaLayout.setVerticalGroup(
             jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,27 +283,48 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jTextFieldRRRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(jButton5)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
+
+        jLabelMapa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelMapaMousePressed(evt);
+            }
+        });
+
+        jLabelMiejsce.setText("Miejsce: ");
+
+        jLabelCena.setText("Cena: ");
 
         javax.swing.GroupLayout jPanelMapaLayout = new javax.swing.GroupLayout(jPanelMapa);
         jPanelMapa.setLayout(jPanelMapaLayout);
         jPanelMapaLayout.setHorizontalGroup(
             jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMapaLayout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelMapaLayout.setVerticalGroup(
             jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMapaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanelMapaLayout.createSequentialGroup()
+                .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabelMiejsce)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCena)))
                 .addContainerGap())
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Użytkownicy");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem1.setText("Zaloguj");
@@ -312,9 +345,6 @@ public class GUI extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -365,6 +395,10 @@ public class GUI extends javax.swing.JFrame {
                 
                 
                 this.setTitle("Zalogowano na konto "+p);
+                
+                if(p.getImie().equals("Administrator")){
+                   jButtonDodajPracownika.setVisible(true);
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null, "Złe hasło");
@@ -381,12 +415,18 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         jPanelLogowanie.setVisible(true);
+        jTextFieldHaslo.setText("");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         //Wszystkie panele zamknąć
         jPanelGlowny.setVisible(false);
-        jPanelLogowanie.setVisible(false);
+        jPanelLogowanie.setVisible(true);
+        jTextFieldHaslo.setText("");
+        this.setTitle("");
+        jPanelBilety.setVisible(false);
+        jPanelRejestracja.setVisible(false);
+        jPanelMapa.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -415,6 +455,12 @@ public class GUI extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src/obrazy/mapa.png");
         jLabelMapa.setIcon(icon);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jLabelMapaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMapaMousePressed
+        Point punkt = new Point(evt.getPoint());
+        jLabelMiejsce.setText(Double.toString(punkt.getX()));
+        jLabelCena.setText(Double.toString(punkt.getY()));
+    }//GEN-LAST:event_jLabelMapaMousePressed
 
     /**
      * @param args the command line arguments
@@ -468,6 +514,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonDodajPracownika;
     private javax.swing.JButton jButtonZaloguj;
     private static javax.swing.JComboBox jComboBoxPracownik;
     private javax.swing.JLabel jLabel1;
@@ -477,9 +524,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelCena;
     private javax.swing.JLabel jLabelMapa;
+    private javax.swing.JLabel jLabelMiejsce;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
