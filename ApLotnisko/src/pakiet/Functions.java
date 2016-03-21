@@ -5,6 +5,7 @@
  */
 package pakiet;
 
+import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -155,6 +156,95 @@ public List<Pracownik> getAllPracownicy() throws SQLException {
             
             
     }
+    
+    
+    public double distancebetween2Points (Point p1, Point p2){
+return (
+        Math.sqrt(
+        (p1.getX() - p2.getX()) 
+        * 
+        (p1.getX() - p2.getX())
+        + 
+        (p1.getY() - p2.getY())
+        *
+        (p1.getY() - p2.getY())
+        )
+        );
+    
+}
+    
+    
+    public List<Miasto> getAllMiasta() throws SQLException {
+	List<Miasto> lista = new ArrayList<Miasto>();
+	
+	Statement myStmt = null;
+	ResultSet myRs = null;
+	
+	try{
+		myStmt = myConn.createStatement();
+		myRs = myStmt.executeQuery("select * from miejsca_docelowe");
+		
+		while(myRs.next()){
+			Miasto temp = convertRowToMiasto(myRs);
+			lista.add(temp);
+		}
+	return lista;
+	}
+	finally{
+		myStmt.close();
+                myRs.close();
+	}
+}
+
+    public Miasto convertRowToMiasto(ResultSet _myRs) throws SQLException {
+        int id = _myRs.getInt("id");
+        String nazwa = _myRs.getString("nazwa");
+        int cena = _myRs.getInt("cena");
+        Miasto temp = new Miasto(id, nazwa,cena);
+        return temp;
+    }
+    
+    public List<Samolot> getAllSamoloty() throws SQLException {
+	List<Samolot> lista = new ArrayList<Samolot>();
+	
+	Statement myStmt = null;
+	ResultSet myRs = null;
+	
+	try{
+		myStmt = myConn.createStatement();
+		myRs = myStmt.executeQuery("select * from samoloty");
+		
+		while(myRs.next()){
+			Samolot temp = convertRowToSamolot(myRs);
+			lista.add(temp);
+		}
+	return lista;
+	}
+	finally{
+		myStmt.close();
+                myRs.close();
+	}
+}
+
+    public Samolot convertRowToSamolot(ResultSet _myRs) throws SQLException {
+        int id = _myRs.getInt("id");
+        String model = _myRs.getString("model");
+        String nr_samolotu = _myRs.getString("nr_samolotu");
+        Samolot temp = new Samolot(id, model, nr_samolotu);
+        return temp;
+    }
+
+    void fillJComboboxWithSamoloty(JComboBox jComboBoxSamoloty) throws SQLException {
+        List<Samolot> lista = new ArrayList<Samolot>();
+        lista = getAllSamoloty();
+        
+        for(Samolot s : lista){
+           jComboBoxSamoloty.addItem(s);
+        }
+    }
+    
+    
+    
     
     
     

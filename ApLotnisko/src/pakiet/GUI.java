@@ -42,6 +42,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
         jButtonDodajPracownika.setVisible(false);
+        jPanelWyborSamolotu.setVisible(false);
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         
@@ -88,6 +89,13 @@ public class GUI extends javax.swing.JFrame {
         jLabelMapa = new javax.swing.JLabel();
         jLabelMiejsce = new javax.swing.JLabel();
         jLabelCena = new javax.swing.JLabel();
+        jButtonWyborSamolotu = new javax.swing.JButton();
+        jPanelWyborSamolotu = new javax.swing.JPanel();
+        jComboBoxSamoloty = new javax.swing.JComboBox();
+        jLabelObrazekSamolotu = new javax.swing.JLabel();
+        jButtonInfoOSamolocie = new javax.swing.JButton();
+        jButtonKoniec = new javax.swing.JButton();
+        jLabelInfoOSamolocie = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -213,9 +221,10 @@ public class GUI extends javax.swing.JFrame {
         jPanelBilety.setLayout(jPanelBiletyLayout);
         jPanelBiletyLayout.setHorizontalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBiletyLayout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelBiletyLayout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanelBiletyLayout.setVerticalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +307,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(200, 200, 200))
         );
 
+        jPanelMapa.setInheritsPopupMenu(true);
+
         jLabelMapa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabelMapaMousePressed(evt);
@@ -308,32 +319,91 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelCena.setText("Cena: ");
 
+        jButtonWyborSamolotu.setText("Dalej");
+        jButtonWyborSamolotu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWyborSamolotuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelMapaLayout = new javax.swing.GroupLayout(jPanelMapa);
         jPanelMapa.setLayout(jPanelMapaLayout);
         jPanelMapaLayout.setHorizontalGroup(
             jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMapaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonWyborSamolotu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelMapaLayout.setVerticalGroup(
             jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMapaLayout.createSequentialGroup()
-                .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMapaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelMapaLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabelMiejsce)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelCena)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelMapaLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addComponent(jLabelMiejsce)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCena)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonWyborSamolotu)
+                .addGap(56, 56, 56))
+        );
+
+        jPanelWyborSamolotu.setPreferredSize(new java.awt.Dimension(800, 533));
+
+        jButtonInfoOSamolocie.setText("Info");
+
+        jButtonKoniec.setText("Zakończ");
+
+        javax.swing.GroupLayout jPanelWyborSamolotuLayout = new javax.swing.GroupLayout(jPanelWyborSamolotu);
+        jPanelWyborSamolotu.setLayout(jPanelWyborSamolotuLayout);
+        jPanelWyborSamolotuLayout.setHorizontalGroup(
+            jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWyborSamolotuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonInfoOSamolocie)
+                        .addGap(185, 185, 185))
+                    .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
+                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelInfoOSamolocie, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelWyborSamolotuLayout.createSequentialGroup()
+                                .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonKoniec))
+                                .addGap(110, 110, 110)
+                                .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(40, Short.MAX_VALUE))))
+        );
+        jPanelWyborSamolotuLayout.setVerticalGroup(
+            jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
+                        .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButtonKoniec)))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonInfoOSamolocie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelInfoOSamolocie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Użytkownicy");
@@ -373,6 +443,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jPanelRejestracja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelMapa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,6 +457,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jPanelRejestracja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelMapa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE))
         );
 
         pack();
@@ -480,27 +554,68 @@ public class GUI extends javax.swing.JFrame {
         Point p_Londyn = new Point(135,228);
         Point p_Rzym   = new Point(227,367);
         
-        Miasto wybrane = null;
+        String nazwa_miasta = "";
+        Miasto wybrane = null;//new Miasto();
         
-        if(f.distancebetween2Points(punkt, p_Moskwa)<= 50){
-            punkt = p_Moskwa;
+        if(f.distancebetween2Points(punkt, p_Moskwa)<= 15){
+            nazwa_miasta = "Moskwa";
         }
-        else if(f.distancebetween2Points(punkt, p_Berlin)<= 50){
-            punkt = p_Berlin;
+        else if(f.distancebetween2Points(punkt, p_Berlin)<= 15){
+            nazwa_miasta = "Berlin";
         }
-        else if(f.distancebetween2Points(punkt, p_Madryt)<= 50){
-            punkt = p_Madryt;
+        else if(f.distancebetween2Points(punkt, p_Madryt)<= 15){
+            nazwa_miasta = "Madryt";
         }
-        else if(f.distancebetween2Points(punkt, p_Paryz)<= 50){
-            punkt = p_Paryz;  
+        else if(f.distancebetween2Points(punkt, p_Paryz)<= 15){
+            nazwa_miasta = "Paryz";
         }
-        else if(f.distancebetween2Points(punkt, p_Londyn)<= 50){
-            punkt = p_Londyn;
+        else if(f.distancebetween2Points(punkt, p_Londyn)<= 15){
+            nazwa_miasta = "Londyn";
         }
-        else if(f.distancebetween2Points(punkt, p_Rzym)<= 50){
-            punkt = p_Rzym;  
+        else if(f.distancebetween2Points(punkt, p_Rzym)<= 15){
+            nazwa_miasta = "Rzym";  
         }
+        
+        List<Miasto> lista_miast = new ArrayList<Miasto>();
+        try {
+            lista_miast = f.getAllMiasta();
+            
+            for(Miasto m : lista_miast){
+                //JOptionPane.showMessageDialog(null, m);
+                if(nazwa_miasta.equals(m.getNazwa()))
+                    wybrane = m;
+            }
+            if (wybrane != null){
+            jLabelMiejsce.setText(wybrane.getNazwa());
+            jLabelCena.setText(Integer.toString(wybrane.getCena()));
+            }
+            
+            
+            
+            
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_jLabelMapaMousePressed
+
+    private void jButtonWyborSamolotuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWyborSamolotuActionPerformed
+       jPanelWyborSamolotu.setVisible(true);
+       jPanelMapa.setVisible(false);
+       
+        try {
+            f.fillJComboboxWithSamoloty(jComboBoxSamoloty);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButtonWyborSamolotuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,8 +670,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonDodajPracownika;
+    private javax.swing.JButton jButtonInfoOSamolocie;
+    private javax.swing.JButton jButtonKoniec;
+    private javax.swing.JButton jButtonWyborSamolotu;
     private javax.swing.JButton jButtonZaloguj;
     private static javax.swing.JComboBox jComboBoxPracownik;
+    private javax.swing.JComboBox jComboBoxSamoloty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -565,8 +684,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelCena;
+    private javax.swing.JLabel jLabelInfoOSamolocie;
     private javax.swing.JLabel jLabelMapa;
     private javax.swing.JLabel jLabelMiejsce;
+    private javax.swing.JLabel jLabelObrazekSamolotu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -576,6 +697,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLogowanie;
     private javax.swing.JPanel jPanelMapa;
     private javax.swing.JPanel jPanelRejestracja;
+    private javax.swing.JPanel jPanelWyborSamolotu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableBilety;
     private javax.swing.JTextField jTextFieldDD;
