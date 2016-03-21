@@ -37,7 +37,7 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         f = new Functions();
         jPanelLogowanie.setVisible(false);
-        jPanelGlowny.setVisible(false);
+        //jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
@@ -82,6 +82,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldRRRR = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jTextFieldImieRejestracji = new javax.swing.JTextField();
+        jTextFieldNazwiskoRejestracji = new javax.swing.JTextField();
         jPanelMapa = new javax.swing.JPanel();
         jLabelMapa = new javax.swing.JLabel();
         jLabelMiejsce = new javax.swing.JLabel();
@@ -99,7 +101,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Hasło:");
 
-        jButtonZaloguj.setText("Zaloguj");
+        jButtonZaloguj.setText("Dalej");
         jButtonZaloguj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonZalogujActionPerformed(evt);
@@ -245,9 +247,12 @@ public class GUI extends javax.swing.JFrame {
             jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRejestracjaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
+                .addGroup(jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5)
+                    .addGroup(jPanelRejestracjaLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldImieRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelRejestracjaLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(26, 26, 26)
@@ -262,16 +267,23 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldRRRR, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton5))
+                    .addGroup(jPanelRejestracjaLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldNazwiskoRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(459, Short.MAX_VALUE))
         );
         jPanelRejestracjaLayout.setVerticalGroup(
             jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRejestracjaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addGroup(jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldImieRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldNazwiskoRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -281,9 +293,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jTextFieldMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jTextFieldRRRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
                 .addComponent(jButton5)
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addGap(200, 200, 200))
         );
 
         jLabelMapa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,8 +470,36 @@ public class GUI extends javax.swing.JFrame {
 
     private void jLabelMapaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMapaMousePressed
         Point punkt = new Point(evt.getPoint());
-        jLabelMiejsce.setText(Double.toString(punkt.getX()));
-        jLabelCena.setText(Double.toString(punkt.getY()));
+        //jLabelMiejsce.setText(Double.toString(punkt.getX()));
+        //jLabelCena.setText(Double.toString(punkt.getY()));
+        
+        Point p_Moskwa = new Point(435,190);
+        Point p_Berlin = new Point(239,234);
+        Point p_Madryt = new Point(67,353);
+        Point p_Paryz  = new Point(149,273);
+        Point p_Londyn = new Point(135,228);
+        Point p_Rzym   = new Point(227,367);
+        
+        Miasto wybrane = null;
+        
+        if(f.distancebetween2Points(punkt, p_Moskwa)<= 50){
+            punkt = p_Moskwa;
+        }
+        else if(f.distancebetween2Points(punkt, p_Berlin)<= 50){
+            punkt = p_Berlin;
+        }
+        else if(f.distancebetween2Points(punkt, p_Madryt)<= 50){
+            punkt = p_Madryt;
+        }
+        else if(f.distancebetween2Points(punkt, p_Paryz)<= 50){
+            punkt = p_Paryz;  
+        }
+        else if(f.distancebetween2Points(punkt, p_Londyn)<= 50){
+            punkt = p_Londyn;
+        }
+        else if(f.distancebetween2Points(punkt, p_Rzym)<= 50){
+            punkt = p_Rzym;  
+        }
     }//GEN-LAST:event_jLabelMapaMousePressed
 
     /**
@@ -540,7 +580,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTable jTableBilety;
     private javax.swing.JTextField jTextFieldDD;
     private javax.swing.JTextField jTextFieldHaslo;
+    private javax.swing.JTextField jTextFieldImieRejestracji;
     private javax.swing.JTextField jTextFieldMM;
+    private javax.swing.JTextField jTextFieldNazwiskoRejestracji;
     private javax.swing.JTextField jTextFieldRRRR;
     // End of variables declaration//GEN-END:variables
 }
