@@ -47,7 +47,7 @@ public class Functions {
     public Functions() throws FileNotFoundException, IOException, SQLException {
         
                 Properties props = new Properties();
-		props.load(new FileInputStream("src/pakiet/properties.properties"));
+		props.load(new FileInputStream("properties.properties"));
 		
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");

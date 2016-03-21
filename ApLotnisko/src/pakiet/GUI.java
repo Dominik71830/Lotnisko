@@ -43,6 +43,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelMapa.setVisible(false);
         jButtonDodajPracownika.setVisible(false);
         jPanelWyborSamolotu.setVisible(false);
+        jPanelSpisMiast.setVisible(false);
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         
@@ -64,10 +65,9 @@ public class GUI extends javax.swing.JFrame {
         jTextFieldHaslo = new javax.swing.JTextField();
         jButtonZaloguj = new javax.swing.JButton();
         jPanelGlowny = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonZarejestruj = new javax.swing.JButton();
+        jButtonListaWycieczek = new javax.swing.JButton();
+        jButtonListaBiletow = new javax.swing.JButton();
         jButtonDodajPracownika = new javax.swing.JButton();
         jPanelBilety = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,7 +95,18 @@ public class GUI extends javax.swing.JFrame {
         jLabelObrazekSamolotu = new javax.swing.JLabel();
         jButtonInfoOSamolocie = new javax.swing.JButton();
         jButtonKoniec = new javax.swing.JButton();
-        jLabelInfoOSamolocie = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaInfoOSamolocie = new javax.swing.JTextArea();
+        jPanelSpisMiast = new javax.swing.JPanel();
+        jButtonMoskwa = new javax.swing.JButton();
+        jButtonBerlin = new javax.swing.JButton();
+        jButtonMadryt = new javax.swing.JButton();
+        jButtonParyz = new javax.swing.JButton();
+        jButtonLondyn = new javax.swing.JButton();
+        jButtonRzym = new javax.swing.JButton();
+        jButtonPowrot = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaHistoriaMiasta = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -130,7 +141,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldHaslo)))
-                        .addContainerGap(604, Short.MAX_VALUE))
+                        .addContainerGap(676, Short.MAX_VALUE))
                     .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                         .addComponent(jButtonZaloguj)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -149,23 +160,26 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Zarejestruj bilet");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonZarejestruj.setText("Zarejestruj bilet");
+        jButtonZarejestruj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonZarejestrujActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Przeglądaj listę wycieczek");
-
-        jButton3.setText("Przeglądaj bilety");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonListaWycieczek.setText("Przeglądaj listę wycieczek");
+        jButtonListaWycieczek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonListaWycieczekActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Przeglądaj listę samolotów");
+        jButtonListaBiletow.setText("Przeglądaj bilety");
+        jButtonListaBiletow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaBiletowActionPerformed(evt);
+            }
+        });
 
         jButtonDodajPracownika.setText("Dodaj pracownika");
         //setVisible(false);
@@ -177,31 +191,26 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanelGlownyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGlownyLayout.createSequentialGroup()
-                        .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3))
-                        .addGap(70, 70, 70)
-                        .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton2)))
-                    .addComponent(jButtonDodajPracownika))
-                .addContainerGap(446, Short.MAX_VALUE))
+                    .addComponent(jButtonZarejestruj)
+                    .addComponent(jButtonListaBiletow))
+                .addGap(70, 70, 70)
+                .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonListaWycieczek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDodajPracownika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(522, Short.MAX_VALUE))
         );
         jPanelGlownyLayout.setVerticalGroup(
             jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGlownyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonZarejestruj)
+                    .addComponent(jButtonListaWycieczek))
                 .addGap(64, 64, 64)
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(61, 61, 61)
-                .addComponent(jButtonDodajPracownika)
-                .addContainerGap(374, Short.MAX_VALUE))
+                    .addComponent(jButtonListaBiletow)
+                    .addComponent(jButtonDodajPracownika))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
 
         jTableBilety.setModel(new javax.swing.table.DefaultTableModel(
@@ -224,7 +233,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanelBiletyLayout.createSequentialGroup()
                 .addGap(193, 193, 193)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanelBiletyLayout.setVerticalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +289,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldNazwiskoRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addContainerGap(531, Short.MAX_VALUE))
         );
         jPanelRejestracjaLayout.setVerticalGroup(
             jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +344,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanelMapaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                             .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
                     .addGroup(jPanelMapaLayout.createSequentialGroup()
@@ -363,48 +372,161 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelWyborSamolotu.setPreferredSize(new java.awt.Dimension(800, 533));
 
+        jComboBoxSamoloty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSamolotyActionPerformed(evt);
+            }
+        });
+
         jButtonInfoOSamolocie.setText("Info");
+        jButtonInfoOSamolocie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInfoOSamolocieActionPerformed(evt);
+            }
+        });
 
         jButtonKoniec.setText("Zakończ");
+
+        jTextAreaInfoOSamolocie.setColumns(20);
+        jTextAreaInfoOSamolocie.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaInfoOSamolocie);
 
         javax.swing.GroupLayout jPanelWyborSamolotuLayout = new javax.swing.GroupLayout(jPanelWyborSamolotu);
         jPanelWyborSamolotu.setLayout(jPanelWyborSamolotuLayout);
         jPanelWyborSamolotuLayout.setHorizontalGroup(
             jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(106, 106, 106)
                 .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWyborSamolotuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonInfoOSamolocie)
                         .addGap(185, 185, 185))
                     .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
-                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelInfoOSamolocie, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelWyborSamolotuLayout.createSequentialGroup()
-                                .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonKoniec))
-                                .addGap(110, 110, 110)
-                                .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonKoniec))
+                        .addGap(110, 110, 110)
+                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelWyborSamolotuLayout.setVerticalGroup(
             jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
                         .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(jButtonKoniec)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonInfoOSamolocie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelInfoOSamolocie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
+
+        jButtonMoskwa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMoskwaActionPerformed(evt);
+            }
+        });
+
+        jButtonBerlin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBerlinActionPerformed(evt);
+            }
+        });
+
+        jButtonMadryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMadrytActionPerformed(evt);
+            }
+        });
+
+        jButtonParyz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonParyzActionPerformed(evt);
+            }
+        });
+
+        jButtonLondyn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLondynActionPerformed(evt);
+            }
+        });
+
+        jButtonRzym.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRzymActionPerformed(evt);
+            }
+        });
+
+        jButtonPowrot.setText("Wróć");
+
+        jTextAreaHistoriaMiasta.setBackground(new java.awt.Color(212, 208, 200));
+        jTextAreaHistoriaMiasta.setColumns(20);
+        jTextAreaHistoriaMiasta.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaHistoriaMiasta);
+
+        javax.swing.GroupLayout jPanelSpisMiastLayout = new javax.swing.GroupLayout(jPanelSpisMiast);
+        jPanelSpisMiast.setLayout(jPanelSpisMiastLayout);
+        jPanelSpisMiastLayout.setHorizontalGroup(
+            jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                        .addComponent(jButtonPowrot, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                        .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                                .addComponent(jButtonMoskwa, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonBerlin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                                .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonMadryt)
+                                    .addComponent(jButtonLondyn))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonRzym, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonParyz, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jPanelSpisMiastLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonBerlin, jButtonLondyn, jButtonMadryt, jButtonMoskwa, jButtonParyz, jButtonRzym});
+
+        jPanelSpisMiastLayout.setVerticalGroup(
+            jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelSpisMiastLayout.createSequentialGroup()
+                        .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonMoskwa, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonBerlin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonMadryt)
+                            .addComponent(jButtonParyz))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelSpisMiastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRzym)
+                            .addComponent(jButtonLondyn)))
+                    .addComponent(jScrollPane3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jButtonPowrot, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanelSpisMiastLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBerlin, jButtonLondyn, jButtonMadryt, jButtonMoskwa, jButtonParyz, jButtonRzym});
 
         jMenu1.setText("Użytkownicy");
 
@@ -444,7 +566,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelMapa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelSpisMiast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,6 +583,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jPanelMapa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanelSpisMiast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -515,7 +641,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelMapa.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonListaBiletowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaBiletowActionPerformed
         jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(true);
         
@@ -528,12 +654,12 @@ public class GUI extends javax.swing.JFrame {
         }
       
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonListaBiletowActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonZarejestrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZarejestrujActionPerformed
         jPanelGlowny.setVisible(false);
         jPanelRejestracja.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonZarejestrujActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jPanelRejestracja.setVisible(false);
@@ -608,6 +734,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonWyborSamolotuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWyborSamolotuActionPerformed
        jPanelWyborSamolotu.setVisible(true);
        jPanelMapa.setVisible(false);
+       jTextAreaInfoOSamolocie.setVisible(false);
        
         try {
             f.fillJComboboxWithSamoloty(jComboBoxSamoloty);
@@ -616,6 +743,185 @@ public class GUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButtonWyborSamolotuActionPerformed
+
+    private void jComboBoxSamolotyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSamolotyActionPerformed
+        jTextAreaInfoOSamolocie.setText(null);
+        jTextAreaInfoOSamolocie.setVisible(false);
+        ImageIcon icon = new ImageIcon();
+        switch(jComboBoxSamoloty.getSelectedItem().toString()){
+            case "Airbus A380":
+                icon = new ImageIcon("src/obrazy/Airbus A380.jpg");
+                jLabelObrazekSamolotu.setIcon(icon);
+               
+                break;
+            case "Antonov 225":
+                icon = new ImageIcon("src/obrazy/Antonov 225.jpg");
+                jLabelObrazekSamolotu.setIcon(icon);
+                
+                break;
+            case "Boeing 777":
+                icon = new ImageIcon("src/obrazy/Boeing 777.jpg");
+                jLabelObrazekSamolotu.setIcon(icon);
+              
+                break;
+            case "Concorde":
+                icon = new ImageIcon("src/obrazy/Concorde.jpg");
+                jLabelObrazekSamolotu.setIcon(icon);
+                
+                break;
+            default:
+                jLabelObrazekSamolotu.setIcon(null);
+                //JOptionPane.showMessageDialog(null,jComboBoxSamoloty.getSelectedItem().toString());
+                break;
+        }
+    }//GEN-LAST:event_jComboBoxSamolotyActionPerformed
+
+    private void jButtonInfoOSamolocieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoOSamolocieActionPerformed
+        jTextAreaInfoOSamolocie.setVisible(true);
+        jTextAreaInfoOSamolocie.setLineWrap(true);
+        jTextAreaInfoOSamolocie.setWrapStyleWord(true);
+        jTextAreaInfoOSamolocie.setEditable(false);
+        switch(jComboBoxSamoloty.getSelectedItem().toString()){
+            case "Boeing 777":
+                jTextAreaInfoOSamolocie.setText("Dwusilnikowy szerokokadłubowy samolot pasażerski produkowany przez amerykańską "
+                        + "wytwórnię Boeing Commercial Airplanes. Znany również jako triple seven. Jest to największy na świecie "
+                        + "samolot dwusilnikowy. Mieści na swoim pokładzie ponad 300 pasażerów, a jego zasięg wynosi w zależności od "
+                        + "wersji od 9 695 do 17 370 km (5235 – 9380 mil morskich).");
+               
+                break;
+            case "Antonov 225":
+                jTextAreaInfoOSamolocie.setText("Sześciosilnikowy samolot transportowy produkcji radzieckiej, pochodzący z "
+                        + "biura konstrukcyjnego Antonowa, zbudowany w zakładach Antonowa. Jest to największy obecnie "
+                        + "używany i najcięższy w historii samolot. Zbudowano tylko jeden egzemplarz");
+                
+                break;
+            case "Airbus A380":
+                jTextAreaInfoOSamolocie.setText("Dwupoziomowy (dwupokładowy) i szerokokadłubowy, czterosilnikowy samolot "
+                        + "pasażerski produkowany przez przedsiębiorstwo Airbus. Dzięki temu, że górny pokład ciągnie się "
+                        + "przez całą długość kadłuba, A380-800 mieści 555 osób przy podziale na trzy klasy lub nawet 853 "
+                        + "przy konfiguracji całej maszyny do standardu klasy ekonomicznej, wyprzedzając pod względem "
+                        + "powierzchni drugiego na liście Boeinga 747-400 (Jumbo Jeta) o 50%.");
+              
+                break;
+            case "Concorde":
+                jTextAreaInfoOSamolocie.setText("Naddźwiękowy samolot pasażerski o napędzie turboodrzutowym, realizacja idei"
+                        + " transportu naddźwiękowego. Powstał jako produkt międzynarodowego porozumienia między Francją i "
+                        + "Wielką Brytanią przy udziale państwowych konsorcjów lotniczych Aérospatiale i British Aircraft "
+                        + "Corporation. Jego pierwszy oblot odbył się w 1969 roku, a siedem lat później miało miejsce "
+                        + "wprowadzenie do służby trwającej 27 lat. Drugi naddźwiękowy pasażerski seryjny odrzutowiec "
+                        + "świata zbudowany na świecie po Tu-144.");
+                
+                break;
+            default:
+                jTextAreaInfoOSamolocie.setText(null);
+                //JOptionPane.showMessageDialog(null,jComboBoxSamoloty.getSelectedItem().toString());
+                break;
+        }
+    }//GEN-LAST:event_jButtonInfoOSamolocieActionPerformed
+
+    private void jButtonListaWycieczekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaWycieczekActionPerformed
+        jTextAreaHistoriaMiasta.setLineWrap(true);
+        jTextAreaHistoriaMiasta.setWrapStyleWord(true);
+        jTextAreaHistoriaMiasta.setEditable(false);
+        
+        jPanelSpisMiast.setVisible(true);
+        jPanelGlowny.setVisible(false);
+        
+        ImageIcon i_Moskwa = new ImageIcon("src/obrazy/moskwa.jpg");
+        ImageIcon i_Paryz = new ImageIcon("src/obrazy/paryz.jpg");
+        ImageIcon i_Berlin = new ImageIcon("src/obrazy/berlin.jpg");
+        ImageIcon i_Rzym = new ImageIcon("src/obrazy/rzym.jpg");
+        ImageIcon i_Londyn = new ImageIcon("src/obrazy/londyn.png");
+        ImageIcon i_Madryt = new ImageIcon("src/obrazy/madryt.jpg");
+        
+        jButtonMoskwa.setIcon(i_Moskwa);
+        jButtonLondyn.setIcon(i_Londyn);
+        jButtonMadryt.setIcon(i_Madryt);
+        jButtonRzym.setIcon(i_Rzym);
+        jButtonParyz.setIcon(i_Paryz);
+        jButtonBerlin.setIcon(i_Berlin);
+        
+    }//GEN-LAST:event_jButtonListaWycieczekActionPerformed
+
+    private void jButtonLondynActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLondynActionPerformed
+        jTextAreaHistoriaMiasta.setText(" miasto będące stolicą Wielkiej Brytanii i Anglii położone w jej południowo-wschodniej "
+                + "części.Położony nad Tamizą, jest trzecim największym miastem Europy po Moskwie i Stambule; jest także "
+                + "największym miastem Unii Europejskiej i jednym z większych miast świata zarówno w skali samego miasta, "
+                + "jak i aglomeracji. Liczba mieszkańców Londynu (w granicach tzw. Wielkiego Londynu) wynosi ok. 8,4 mln (2013 r.)"
+                + " na obszarze 1572 km²; cała zaś aglomeracja londyńska, łącznie ze wszystkimi przyległymi miejscowościami liczy "
+                + "ok. 13 mln mieszkańców[2][3] (obszar tzw. metropolia). Około 20% mieszkańców pochodzi z Azji, Afryki i Karaibów."
+                + "Współczesny Londyn jest największym centrum finansowym świata (od 2006 przed Nowym Jorkiem). Tutaj dokonuje "
+                + "się 30% światowego obrotu walutami i 40% światowego obrotu euroobligacjami. W Londynie usytuowanych jest "
+                + "kilkaset banków, największa giełda w Europie (trzecia na świecie), liczne towarzystwa ubezpieczeniowe i "
+                + "inwestycyjne. Londyn jest także ogromnym ośrodkiem medialnym.");
+    }//GEN-LAST:event_jButtonLondynActionPerformed
+
+    private void jButtonMoskwaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoskwaActionPerformed
+            jTextAreaHistoriaMiasta.setText("Stolica Rosji i największe miasto tego kraju. Jest także największym miastem Europy, "
+                + "liczącym 12,1 mln mieszkańców (stan na 1 stycznia 2014[1]), przy czym cała aglomeracja liczy 15,512 mln "
+                + "mieszkańców (2012)[4]. Jeden z najważniejszych ośrodków politycznych, gospodarczych, kulturowych, religijnych, "
+                + "finansowych, edukacyjnych, komunikacyjnych oraz turystycznych Rosji.Moskwa jest siedzibą najwyższych władz "
+                + "państwowych Rosji w tym: prezydenta, parlamentu (Dumy Państwowej i Rady Federacji) oraz rządu. W przeszłości "
+                    + "miasto było stolicą: Księstwa Moskiewskiego (1213-1328), Wielkiego Księstwa Moskiewskiego (1328-1547), "
+                    + "Carstwa Rosyjskiego (1547-1712), Rosji Radzieckiej (1917-1922) i Związku Radzieckiego (1922-1991). Moskwa "
+                    + "jest także stolicą Rosyjskiego Kościoła Prawosławnego. Znajduje się tu ponad 600 świątyń różnych wyznań, w "
+                    + "tym Cerkiew Chrystusa Zbawiciela – największa na świecie cerkiew prawosławna, a także Monaster "
+                    + "Daniłowski – siedziba patriarchy Moskwy i całej Rusi. Podczas II wojny światowej Moskwa jako jedyna "
+                    + "stolica europejska odparła ataki niemieckie uzyskując tytuł „miasta-bohatera”.Miasto jest obecnie jednym z"
+                    + " najważniejszych ośrodków finansowych świata. W rankingu miast światowych pod względem kosztów życia "
+                    + "Moskwa zajęła w 2006 pierwsze miejsce jako najdroższe miasto świata, w 2009 była trzecia[5]. W rankingu "
+                    + "miast światowych miesięcznika „Forbes” Moskwa zajęła w 2011 po raz kolejny z rzędu pierwsze miejsce pod "
+                    + "względem liczby zamieszkujących ją miliarderów (79 osób)[6]. Wcześniej, w 2009, w rankingu tym przejściowo"
+                    + " z pierwszego spadła na trzecie miejsce[7].W 1990 historyczne centrum miasta (Kreml oraz plac Czerwony "
+                    + "wraz z nawiązującymi do nich obiektami) zostało wpisane na Listę światowego dziedzictwa UNESCO.");
+    }//GEN-LAST:event_jButtonMoskwaActionPerformed
+
+    private void jButtonParyzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonParyzActionPerformed
+        jTextAreaHistoriaMiasta.setText(" stolica i największa aglomeracja Francji, położona w centrum Basenu Paryskiego, nad Sekwaną (La Seine). Miasto stanowi centrum polityczne, ekonomiczne i kulturalne kraju."
+                +"W granicach administracyjnych Paryża zamieszkuje ponad 2 mln osób (według danych z 2010 było to 2 243 833[1]), "
+                + "w tzw. Wielkim Paryżu ok. 10 mln, a w całym zespole miejskim ponad 12 mln (w 2007 paryską przestrzeń "
+                + "aglomeracji zamieszkiwało 12 067 000 osób). Aglomeracja paryska konkuruje tym samym pod względem liczby "
+                + "ludności w Unii Europejskiej z Londynem.");
+    }//GEN-LAST:event_jButtonParyzActionPerformed
+
+    private void jButtonMadrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMadrytActionPerformed
+        jTextAreaHistoriaMiasta.setText("stolica i największe miasto Hiszpanii, położony w środkowej części kraju na Wyżynie Kastylijskiej u podnóża Sierra de Guadarrama nad rzeką Manzanares.\n" 
+                +"Centrum administracyjne ma powierzchnię 606 km² i liczbę ludności 3,2 mln[1], natomiast region autonomiczny "
+                + "Comunidad de Madrid ma powierzchnię 8022 km² i liczbę ludności prawie 6,5 mln[2][3]. Jest to trzecie co do "
+                + "wielkości miasto Unii Europejskiej (po Londynie i Berlinie) oraz trzeci co do wielkości monocentryczny obszar "
+                + "miejski w UE (po Londynie i Paryżu)[4]. Madryt jest siedzibą rządu, parlamentu, ministerstw, agencji i innych "
+                + "przedstawicielstw międzynarodowych, jak i też oficjalną rezydencją króla Hiszpanii[5]. Na płaszczyźnie "
+                + "ekonomicznej Madryt jest czwartym najbogatszym miastem w Europie (po Londynie, Paryżu i Moskwie) oraz "
+                + "trzecim w ramach UE[6].");
+    }//GEN-LAST:event_jButtonMadrytActionPerformed
+
+    private void jButtonRzymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRzymActionPerformed
+        jTextAreaHistoriaMiasta.setText("stolica i największe miasto Włoch, położone w środkowej części kraju nad rzeką Tyber i "
+                + "Morzem Śródziemnym. Centrum administracyjne ma powierzchnię 1287 km² i liczbę ludności 2 868 104[2], będąc "
+                + "czwartym co do wielkości miastem Unii Europejskiej. Miasto metropolitalne Rzym utworzone z terenów byłej "
+                + "prowincji o tej samej nazwie ma 4 331 856 mieszkańców[3]. Rzym jest również stolicą regionu administracyjno-historycznego "
+                + "Lacjum (Lazio).Rzym jest metropolią o znaczeniu globalnym[4][5][6], a także dużym węzłem komunikacyjnym z "
+                + "jednym z największych międzynarodowych portów lotniczych w Europie, który obsługuje ponad 38 milionów "
+                + "pasażerów rocznie, rozbudowaną siecią autostrad i linii kolei dużych prędkości. Światowy ośrodek turystyczny z "
+                + "bardzo bogatymi zabytkami starożytności i średniowiecza (kościoły, bazyliki, Koloseum, pałace, akwedukty, "
+                + "fontanny i wiele innych budowli), niezwykle bogate muzea, nowoczesne osiedla mieszkaniowe na przedmieściach. "
+                + "W 1960 roku organizował Letnie Igrzyska Olimpijskie. W 2013 roku Rzym odwiedziło 8,6 mln turystów[7]. "
+                + "Znajdują się tu siedziby dwóch organizacji ONZ: organizacji do spraw Wyżywienia i Rolnictwa oraz "
+                + "Międzynarodowego Funduszu Rozwoju Rolnictwa.");
+    }//GEN-LAST:event_jButtonRzymActionPerformed
+
+    private void jButtonBerlinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBerlinActionPerformed
+        jTextAreaHistoriaMiasta.setText(" stolica, siedziba rządu Republiki Federalnej Niemiec. Największe miasto Niemiec, na"
+                + " prawach kraju związkowego. Zajmuje powierzchnię ok. 892 km², zamieszkuje je 3,4 mln osób. Jest trzecim "
+                + "największym (po Londynie i Paryżu)[2] miastem w Unii Europejskiej.Berlin jest podzielony na dwanaście okręgów "
+                + "administracyjnych (Bezirk). Przez przestrzeń miejską przepływają m.in. rzeki Sprewa i Hawela, a ponadto "
+                + "znajduje się wiele jezior i zatok, w tym największe Müggelsee.Pierwsza wzmianka o mieście pochodzi z 1237. "
+                + "Berlin pełnił rolę historycznej stolicy Brandenburgii, Prus, Cesarstwa Niemieckiego, Republiki Weimarskiej i "
+                + "III Rzeszy. Po 1945 wschodnia część miasta była stolicą Niemieckiej Republiki Demokratycznej, natomiast "
+                + "pozostała tworzyła Berlin Zachodni – otoczona murem (od 1961) enklawa na terenie NRD. Po zjednoczeniu Niemiec "
+                + "w 1990 Berlin został ponownie stolicą Niemiec, siedzibą prezydenta (od 1994), niemieckiego Bundestagu (od 1999)"
+                + " i Bundesratu (od 2000).");
+    }//GEN-LAST:event_jButtonBerlinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -664,16 +970,22 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonBerlin;
     private javax.swing.JButton jButtonDodajPracownika;
     private javax.swing.JButton jButtonInfoOSamolocie;
     private javax.swing.JButton jButtonKoniec;
+    private javax.swing.JButton jButtonListaBiletow;
+    private javax.swing.JButton jButtonListaWycieczek;
+    private javax.swing.JButton jButtonLondyn;
+    private javax.swing.JButton jButtonMadryt;
+    private javax.swing.JButton jButtonMoskwa;
+    private javax.swing.JButton jButtonParyz;
+    private javax.swing.JButton jButtonPowrot;
+    private javax.swing.JButton jButtonRzym;
     private javax.swing.JButton jButtonWyborSamolotu;
     private javax.swing.JButton jButtonZaloguj;
+    private javax.swing.JButton jButtonZarejestruj;
     private static javax.swing.JComboBox jComboBoxPracownik;
     private javax.swing.JComboBox jComboBoxSamoloty;
     private javax.swing.JLabel jLabel1;
@@ -684,7 +996,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelCena;
-    private javax.swing.JLabel jLabelInfoOSamolocie;
     private javax.swing.JLabel jLabelMapa;
     private javax.swing.JLabel jLabelMiejsce;
     private javax.swing.JLabel jLabelObrazekSamolotu;
@@ -697,9 +1008,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLogowanie;
     private javax.swing.JPanel jPanelMapa;
     private javax.swing.JPanel jPanelRejestracja;
+    private javax.swing.JPanel jPanelSpisMiast;
     private javax.swing.JPanel jPanelWyborSamolotu;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableBilety;
+    private javax.swing.JTextArea jTextAreaHistoriaMiasta;
+    private javax.swing.JTextArea jTextAreaInfoOSamolocie;
     private javax.swing.JTextField jTextFieldDD;
     private javax.swing.JTextField jTextFieldHaslo;
     private javax.swing.JTextField jTextFieldImieRejestracji;
