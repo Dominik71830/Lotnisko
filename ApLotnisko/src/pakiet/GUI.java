@@ -31,6 +31,7 @@ public class GUI extends javax.swing.JFrame {
      */
     
     static Functions f;
+    static Bilet nowy_bilet;
     //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
     public GUI() throws SQLException, IOException {
         initComponents();
@@ -72,6 +73,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelBilety = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableBilety = new javax.swing.JTable();
+        jButtonPowrotBiletow = new javax.swing.JButton();
         jPanelRejestracja = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -226,18 +228,31 @@ public class GUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableBilety);
 
+        jButtonPowrotBiletow.setText("Powrót");
+        jButtonPowrotBiletow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPowrotBiletowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBiletyLayout = new javax.swing.GroupLayout(jPanelBilety);
         jPanelBilety.setLayout(jPanelBiletyLayout);
         jPanelBiletyLayout.setHorizontalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBiletyLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
+                .addContainerGap()
+                .addComponent(jButtonPowrotBiletow, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanelBiletyLayout.setVerticalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBiletyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonPowrotBiletow)
+                .addContainerGap())
         );
 
         jLabel2.setText("Imię: ");
@@ -395,22 +410,20 @@ public class GUI extends javax.swing.JFrame {
         jPanelWyborSamolotu.setLayout(jPanelWyborSamolotuLayout);
         jPanelWyborSamolotuLayout.setHorizontalGroup(
             jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWyborSamolotuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonInfoOSamolocie)
+                .addGap(274, 274, 274))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWyborSamolotuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWyborSamolotuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonInfoOSamolocie)
-                        .addGap(185, 185, 185))
-                    .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
-                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonKoniec))
-                        .addGap(110, 110, 110)
-                        .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonKoniec))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(132, 132, 132))
         );
         jPanelWyborSamolotuLayout.setVerticalGroup(
             jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,13 +433,13 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelWyborSamolotuLayout.createSequentialGroup()
                         .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(jButtonKoniec)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
                 .addComponent(jButtonInfoOSamolocie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jButtonMoskwa.addActionListener(new java.awt.event.ActionListener() {
@@ -466,6 +479,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButtonPowrot.setText("Wróć");
+        jButtonPowrot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPowrotActionPerformed(evt);
+            }
+        });
 
         jTextAreaHistoriaMiasta.setBackground(new java.awt.Color(212, 208, 200));
         jTextAreaHistoriaMiasta.setColumns(20);
@@ -659,6 +677,10 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonZarejestrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZarejestrujActionPerformed
         jPanelGlowny.setVisible(false);
         jPanelRejestracja.setVisible(true);
+        nowy_bilet = new Bilet();
+        
+        
+        
     }//GEN-LAST:event_jButtonZarejestrujActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -666,6 +688,23 @@ public class GUI extends javax.swing.JFrame {
         jPanelMapa.setVisible(true);
         ImageIcon icon = new ImageIcon("src/obrazy/mapa.png");
         jLabelMapa.setIcon(icon);
+        
+        try{
+            String imie = jTextFieldImieRejestracji.getText();
+            String nazwisko = jTextFieldNazwiskoRejestracji.getText();
+            String dzien = jTextFieldDD.getText();
+            String miesiac = jTextFieldMM.getText();
+            String rok = jTextFieldRRRR.getText();
+            String data = dzien + "-" + miesiac + "-" + rok;
+            
+            
+            
+        }
+        catch (Exception e){
+            
+        }
+        
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jLabelMapaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMapaMousePressed
@@ -923,6 +962,16 @@ public class GUI extends javax.swing.JFrame {
                 + " i Bundesratu (od 2000).");
     }//GEN-LAST:event_jButtonBerlinActionPerformed
 
+    private void jButtonPowrotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowrotActionPerformed
+        jPanelSpisMiast.setVisible(false);
+        jPanelGlowny.setVisible(true);
+    }//GEN-LAST:event_jButtonPowrotActionPerformed
+
+    private void jButtonPowrotBiletowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowrotBiletowActionPerformed
+       jPanelBilety.setVisible(false);
+       jPanelGlowny.setVisible(true);
+    }//GEN-LAST:event_jButtonPowrotBiletowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -982,6 +1031,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMoskwa;
     private javax.swing.JButton jButtonParyz;
     private javax.swing.JButton jButtonPowrot;
+    private javax.swing.JButton jButtonPowrotBiletow;
     private javax.swing.JButton jButtonRzym;
     private javax.swing.JButton jButtonWyborSamolotu;
     private javax.swing.JButton jButtonZaloguj;

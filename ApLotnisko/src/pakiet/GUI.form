@@ -264,7 +264,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonPowrotBiletow" min="-2" pref="102" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="574" max="-2" attributes="0"/>
                   <EmptySpace pref="105" max="32767" attributes="0"/>
               </Group>
@@ -273,6 +275,11 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jScrollPane1" alignment="0" pref="579" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButtonPowrotBiletow" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -322,6 +329,14 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButtonPowrotBiletow">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Powr&#xf3;t"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPowrotBiletowActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelRejestracja">
@@ -528,27 +543,23 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButtonInfoOSamolocie" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jButtonInfoOSamolocie" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBoxSamoloty" min="-2" pref="276" max="-2" attributes="0"/>
-                              <Component id="jButtonKoniec" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
-                              <Component id="jLabelObrazekSamolotu" pref="370" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jComboBoxSamoloty" min="-2" pref="276" max="-2" attributes="0"/>
+                      <Component id="jButtonKoniec" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="370" max="-2" attributes="0"/>
+                      <Component id="jLabelObrazekSamolotu" min="-2" pref="370" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -560,15 +571,15 @@
                       <Component id="jLabelObrazekSamolotu" min="-2" pref="225" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jComboBoxSamoloty" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonKoniec" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="jButtonInfoOSamolocie" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="197" max="-2" attributes="0"/>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -720,6 +731,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Wr&#xf3;&#x107;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPowrotActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
