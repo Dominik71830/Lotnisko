@@ -5,6 +5,7 @@
  */
 package pakiet;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,6 +33,8 @@ public class GUI extends javax.swing.JFrame {
     
     static Functions f;
     static Bilet nowy_bilet;
+    static Miasto wybrane;
+    static Samolot samolot;
     //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
     public GUI() throws SQLException, IOException {
         initComponents();
@@ -401,6 +404,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButtonKoniec.setText("Zakończ");
+        jButtonKoniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKoniecActionPerformed(evt);
+            }
+        });
 
         jTextAreaInfoOSamolocie.setColumns(20);
         jTextAreaInfoOSamolocie.setRows(5);
@@ -419,7 +427,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBoxSamoloty, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonKoniec))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanelWyborSamolotuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelObrazekSamolotu, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -697,7 +705,10 @@ public class GUI extends javax.swing.JFrame {
             String rok = jTextFieldRRRR.getText();
             String data = dzien + "-" + miesiac + "-" + rok;
             
-            
+            nowy_bilet.setImie_pasazera(imie);
+            nowy_bilet.setNazwisko_pasazera(nazwisko);
+            nowy_bilet.setData_lotu(data);
+            //JOptionPane.showMessageDialog(null,nowy_bilet);
             
         }
         catch (Exception e){
@@ -711,6 +722,9 @@ public class GUI extends javax.swing.JFrame {
         Point punkt = new Point(evt.getPoint());
         //jLabelMiejsce.setText(Double.toString(punkt.getX()));
         //jLabelCena.setText(Double.toString(punkt.getY()));
+
+       
+        
         
         Point p_Moskwa = new Point(435,190);
         Point p_Berlin = new Point(239,234);
@@ -720,7 +734,7 @@ public class GUI extends javax.swing.JFrame {
         Point p_Rzym   = new Point(227,367);
         
         String nazwa_miasta = "";
-        Miasto wybrane = null;//new Miasto();
+        wybrane = null;//new Miasto();
         
         if(f.distancebetween2Points(punkt, p_Moskwa)<= 15){
             nazwa_miasta = "Moskwa";
@@ -755,7 +769,7 @@ public class GUI extends javax.swing.JFrame {
             jLabelCena.setText(Integer.toString(wybrane.getCena()));
             }
             
-            
+         
             
             
             
@@ -771,12 +785,19 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMapaMousePressed
 
     private void jButtonWyborSamolotuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWyborSamolotuActionPerformed
+      
+        nowy_bilet.setId_miejsca_docelowego(wybrane.getId());
+         //JOptionPane.showMessageDialog(null, nowy_bilet);
+        
+        
+        
        jPanelWyborSamolotu.setVisible(true);
        jPanelMapa.setVisible(false);
        jTextAreaInfoOSamolocie.setVisible(false);
        
         try {
             f.fillJComboboxWithSamoloty(jComboBoxSamoloty);
+            //jComboBoxSamoloty.setSelectedItem(null);
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -813,6 +834,15 @@ public class GUI extends javax.swing.JFrame {
                 //JOptionPane.showMessageDialog(null,jComboBoxSamoloty.getSelectedItem().toString());
                 break;
         }
+        
+        samolot = (Samolot) jComboBoxSamoloty.getSelectedItem();
+        nowy_bilet.setId_samolotu(samolot.getId());
+        //JOptionPane.showMessageDialog(null,nowy_bilet);
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jComboBoxSamolotyActionPerformed
 
     private void jButtonInfoOSamolocieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoOSamolocieActionPerformed
@@ -971,6 +1001,27 @@ public class GUI extends javax.swing.JFrame {
        jPanelBilety.setVisible(false);
        jPanelGlowny.setVisible(true);
     }//GEN-LAST:event_jButtonPowrotBiletowActionPerformed
+
+    private void jButtonKoniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKoniecActionPerformed
+        try {
+            f.addBilet(nowy_bilet);
+            jPanelWyborSamolotu.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Zakonczono pomyślnie");
+            
+            try {
+            f.fillJTableWithBilety(jTableBilety);
+            //f.changeColumnNames(jTableBilety);
+
+            } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jPanelBilety.setVisible(true);
+            
+        } catch (SQLException ex) {
+           // JOptionPane.showMessageDialog(null, "blablabla");
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonKoniecActionPerformed
 
     /**
      * @param args the command line arguments

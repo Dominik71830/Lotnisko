@@ -13,6 +13,7 @@ import java.security.Key;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -242,7 +243,22 @@ return (
            jComboBoxSamoloty.addItem(s);
         }
     }
-    
+
+    void addBilet(Bilet nowy_bilet) throws SQLException {
+        PreparedStatement pstm = null;
+        pstm = myConn.prepareStatement("insert into bilety (id_samolotu,data_lotu,imie_pasazera,nazwisko_pasazera,id_miejsca_docelowego)" +
+                                        "values (?,?,?,?,?)");
+        
+        
+        pstm.setInt(1, nowy_bilet.getId_samolotu());
+        pstm.setString(2,nowy_bilet.getData_lotu());
+        pstm.setString(3, nowy_bilet.getImie_pasazera());
+        pstm.setString(4, nowy_bilet.getNazwisko_pasazera());
+        pstm.setInt(5, nowy_bilet.getId_miejsca_docelowego());
+       //JOptionPane.showMessageDialog(null,pstm.toString());
+        pstm.execute();
+        
+    }
     
     
     

@@ -103,7 +103,7 @@ insert into bilety (id,/*nr_lotu,id_samolotu,id_pasazera,id_pracownika,cena,*/da
 values (1,/*1111,1,1,1,2000,*/'2016-05-10','2015-12-14 17:04:18',/*,'Moskwa',*/'John','Smith'/*,'Boeing 777'*/,1,1);
 insert into bilety (id,/*nr_lotu,id_samolotu,id_pasazera,id_pracownika,cena,*/data_lotu,data_wystawienia_biletu,/*cel,*/imie_pasazera,nazwisko_pasazera/*,model_samolotu*/,id_miejsca_docelowego, id_samolotu)
 values (2,/*2222,2,2,2,3000,*/'2016-04-11','2010-01-01 17:04:18',/*'Berlin',*/'Sarah','Collins'/*,'Antonov 225'*/,2,2);
-
+#insert into bilety (id_samolotu,data_lotu,imie_pasazera,nazwisko_pasazera,id_miejsca_docelowego) values (3,'?','?','?',5);
 
 
 CREATE TABLE IF NOT EXISTS `bazalotnisko`.`miejsca_docelowe` (
