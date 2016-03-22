@@ -738,21 +738,33 @@ public class GUI extends javax.swing.JFrame {
         
         if(f.distancebetween2Points(punkt, p_Moskwa)<= 15){
             nazwa_miasta = "Moskwa";
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Moskwa.png");
+            jLabelMapa.setIcon(obrazek);
         }
         else if(f.distancebetween2Points(punkt, p_Berlin)<= 15){
             nazwa_miasta = "Berlin";
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Berlin.png");
+            jLabelMapa.setIcon(obrazek);
         }
         else if(f.distancebetween2Points(punkt, p_Madryt)<= 15){
             nazwa_miasta = "Madryt";
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Madryt.png");
+            jLabelMapa.setIcon(obrazek);
         }
         else if(f.distancebetween2Points(punkt, p_Paryz)<= 15){
             nazwa_miasta = "Paryz";
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Paryz.png");
+            jLabelMapa.setIcon(obrazek);
         }
         else if(f.distancebetween2Points(punkt, p_Londyn)<= 15){
             nazwa_miasta = "Londyn";
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Londyn.png");
+            jLabelMapa.setIcon(obrazek);
         }
         else if(f.distancebetween2Points(punkt, p_Rzym)<= 15){
             nazwa_miasta = "Rzym";  
+            ImageIcon obrazek = new ImageIcon("src/obrazy/mapa - Rzym.png");
+            jLabelMapa.setIcon(obrazek);
         }
         
         List<Miasto> lista_miast = new ArrayList<Miasto>();
