@@ -58,6 +58,9 @@ public class Pracownik {
     public void setHaslo(String haslo) {
         this.haslo = haslo;
     }
+
+    public Pracownik() {
+    }
     
     
     

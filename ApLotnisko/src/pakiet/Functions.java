@@ -259,8 +259,20 @@ return (
         pstm.execute();
         
     }
-    
-    
+
+    void addPracownik(Pracownik nowy_pracownik) throws SQLException {
+        PreparedStatement pstm = null;
+        pstm = myConn.prepareStatement("insert into pracownicy (imie, nazwisko, haslo)" +
+                                        "values (?,?,?)");
+        
+        
+        pstm.setString(1, nowy_pracownik.getImie());
+        pstm.setString(2, nowy_pracownik.getNazwisko());
+        pstm.setString(3, nowy_pracownik.getHaslo());
+       //JOptionPane.showMessageDialog(null,pstm.toString());
+        pstm.execute();
+        
+    }
     
     
     

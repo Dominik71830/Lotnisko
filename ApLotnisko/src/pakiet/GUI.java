@@ -35,19 +35,21 @@ public class GUI extends javax.swing.JFrame {
     static Bilet nowy_bilet;
     static Miasto wybrane;
     static Samolot samolot;
+    static Pracownik nowy_pracownik;
     //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
     public GUI() throws SQLException, IOException {
         initComponents();
         setLocationRelativeTo(null);
         f = new Functions();
         jPanelLogowanie.setVisible(false);
-        //jPanelGlowny.setVisible(false);
+        jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
         jButtonDodajPracownika.setVisible(false);
         jPanelWyborSamolotu.setVisible(false);
         jPanelSpisMiast.setVisible(false);
+        jPanelRejestracjaPracownika.setVisible(false);
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         
@@ -112,6 +114,16 @@ public class GUI extends javax.swing.JFrame {
         jButtonPowrot = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaHistoriaMiasta = new javax.swing.JTextArea();
+        jPanelRejestracjaPracownika = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextFieldRejestracjaImie = new javax.swing.JTextField();
+        jTextFieldRejestracjaNazwisko = new javax.swing.JTextField();
+        jTextFieldRejestracjaHaslo = new javax.swing.JTextField();
+        jTextFieldRejestracjaHasloPowt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -146,7 +158,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldHaslo)))
-                        .addContainerGap(676, Short.MAX_VALUE))
+                        .addContainerGap(604, Short.MAX_VALUE))
                     .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                         .addComponent(jButtonZaloguj)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -188,6 +200,11 @@ public class GUI extends javax.swing.JFrame {
 
         jButtonDodajPracownika.setText("Dodaj pracownika");
         //setVisible(false);
+        jButtonDodajPracownika.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDodajPracownikaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGlownyLayout = new javax.swing.GroupLayout(jPanelGlowny);
         jPanelGlowny.setLayout(jPanelGlownyLayout);
@@ -202,7 +219,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonListaWycieczek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDodajPracownika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(522, Short.MAX_VALUE))
+                .addContainerGap(450, Short.MAX_VALUE))
         );
         jPanelGlownyLayout.setVerticalGroup(
             jPanelGlownyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +264,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jButtonPowrotBiletow, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanelBiletyLayout.setVerticalGroup(
             jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +324,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldNazwiskoRejestracji, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(531, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
         jPanelRejestracjaLayout.setVerticalGroup(
             jPanelRejestracjaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +379,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanelMapaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
                     .addGroup(jPanelMapaLayout.createSequentialGroup()
@@ -523,7 +540,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jButtonRzym, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButtonParyz, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(36, 36, 36)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -547,12 +564,80 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jButtonRzym)
                             .addComponent(jButtonLondyn)))
                     .addComponent(jScrollPane3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jButtonPowrot, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanelSpisMiastLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBerlin, jButtonLondyn, jButtonMadryt, jButtonMoskwa, jButtonParyz, jButtonRzym});
+
+        jLabel8.setText("Imie:");
+
+        jLabel9.setText("Nazwisko:");
+
+        jLabel10.setText("Hasło:");
+
+        jLabel11.setText("Powtórz hasło:");
+
+        jButton1.setText("Dodaj Pracownika");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelRejestracjaPracownikaLayout = new javax.swing.GroupLayout(jPanelRejestracjaPracownika);
+        jPanelRejestracjaPracownika.setLayout(jPanelRejestracjaPracownikaLayout);
+        jPanelRejestracjaPracownikaLayout.setHorizontalGroup(
+            jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRejestracjaPracownikaLayout.createSequentialGroup()
+                .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRejestracjaPracownikaLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldRejestracjaImie)
+                            .addComponent(jTextFieldRejestracjaNazwisko)
+                            .addComponent(jTextFieldRejestracjaHaslo)
+                            .addComponent(jTextFieldRejestracjaHasloPowt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                    .addGroup(jPanelRejestracjaPracownikaLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(428, Short.MAX_VALUE))
+        );
+
+        jPanelRejestracjaPracownikaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel8, jLabel9});
+
+        jPanelRejestracjaPracownikaLayout.setVerticalGroup(
+            jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRejestracjaPracownikaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldRejestracjaImie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldRejestracjaNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldRejestracjaHaslo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldRejestracjaHasloPowt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+
+        jPanelRejestracjaPracownikaLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel8, jLabel9, jTextFieldRejestracjaHaslo, jTextFieldRejestracjaHasloPowt, jTextFieldRejestracjaImie, jTextFieldRejestracjaNazwisko});
 
         jMenu1.setText("Użytkownicy");
 
@@ -592,9 +677,14 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelMapa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
+                .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelSpisMiast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelRejestracjaPracownika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -611,6 +701,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jPanelWyborSamolotu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelSpisMiast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelRejestracjaPracownika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1035,6 +1130,36 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonKoniecActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String Imie_pracownika = jTextFieldRejestracjaImie.getText();
+        String Nazwisko_pracownika = jTextFieldRejestracjaNazwisko.getText();
+        String Haslo_pracownika = jTextFieldRejestracjaHaslo.getText();
+        String Haslo_pracownika_powtorzone = jTextFieldRejestracjaHasloPowt.getText();
+        String Haslo_encrypt = null;
+        try {
+            Haslo_encrypt = f.encrypt(Haslo_pracownika);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        nowy_pracownik = new Pracownik();
+        nowy_pracownik.setImie(Imie_pracownika);
+        nowy_pracownik.setNazwisko(Nazwisko_pracownika);
+        nowy_pracownik.setHaslo(Haslo_encrypt);
+       JOptionPane.showMessageDialog(null, Imie_pracownika);
+        try {
+            f.addPracownik(nowy_pracownik);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonDodajPracownikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajPracownikaActionPerformed
+        jPanelGlowny.setVisible(false);
+        jPanelRejestracjaPracownika.setVisible(true);
+    }//GEN-LAST:event_jButtonDodajPracownikaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1082,6 +1207,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonBerlin;
     private javax.swing.JButton jButtonDodajPracownika;
@@ -1102,12 +1228,16 @@ public class GUI extends javax.swing.JFrame {
     private static javax.swing.JComboBox jComboBoxPracownik;
     private javax.swing.JComboBox jComboBoxSamoloty;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCena;
     private javax.swing.JLabel jLabelMapa;
     private javax.swing.JLabel jLabelMiejsce;
@@ -1121,6 +1251,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLogowanie;
     private javax.swing.JPanel jPanelMapa;
     private javax.swing.JPanel jPanelRejestracja;
+    private javax.swing.JPanel jPanelRejestracjaPracownika;
     private javax.swing.JPanel jPanelSpisMiast;
     private javax.swing.JPanel jPanelWyborSamolotu;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1135,5 +1266,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldMM;
     private javax.swing.JTextField jTextFieldNazwiskoRejestracji;
     private javax.swing.JTextField jTextFieldRRRR;
+    private javax.swing.JTextField jTextFieldRejestracjaHaslo;
+    private javax.swing.JTextField jTextFieldRejestracjaHasloPowt;
+    private javax.swing.JTextField jTextFieldRejestracjaImie;
+    private javax.swing.JTextField jTextFieldRejestracjaNazwisko;
     // End of variables declaration//GEN-END:variables
 }
