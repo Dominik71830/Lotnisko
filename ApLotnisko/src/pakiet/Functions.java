@@ -274,11 +274,79 @@ return (
         
     }
     
+    public String[] Informacje_samolot (Bilet _b) throws SQLException
+    {
+        String[] tablica_informacji = new String[2]; 
+        List<Samolot> lista_samolotow = new ArrayList<Samolot>();
+        lista_samolotow = getAllSamoloty();
+        
+        for (Samolot s : lista_samolotow)
+        {
+          if (s.getId() == _b.getId_samolotu())
+          {
+              tablica_informacji[0]= s.getModel();
+              tablica_informacji[1]=s.getNr_samolotu();
+          }
+        }
+        
+        return tablica_informacji;
+    }
+    
+    
+     public Bilet convertRowToBilet(ResultSet _myRs) throws SQLException {
+        int id = _myRs.getInt("id");
+        int id_samolotu = _myRs.getInt("id_samolotu");
+        String data_lotu = _myRs.getString("data_lotu");
+        String data_wystawienia_biletu = _myRs.getString("data_wystawienia_biletu");
+        String imie_pasazera = _myRs.getString("imie_pasazera");
+        String nazwisko_pasazera = _myRs.getString("nazwisko_pasazera");
+        int id_miejsca_docelowego = _myRs.getInt("id_miejsca_docelowego");
+        Bilet temp = new Bilet(id, data_lotu, data_wystawienia_biletu, imie_pasazera, nazwisko_pasazera, id_miejsca_docelowego, id_samolotu);
+        //JOptionPane.showMessageDialog(null, id);
+        return temp;
+    }
     
     
     
-    
-    
-    
+    public List<Bilet> getAllBilety() throws SQLException {
+	List<Bilet> lista = new ArrayList<Bilet>();
+	
+	Statement myStmt = null;
+	ResultSet myRs = null;
+	
+	try{
+		myStmt = myConn.createStatement();
+		myRs = myStmt.executeQuery("select * from bilety");
+		
+		while(myRs.next()){
+			Bilet temp = convertRowToBilet(myRs);
+			lista.add(temp);
+                        
+		}
+                
+	return lista;
+	}
+	finally{
+		myStmt.close();
+                myRs.close();
+	} 
+    } 
+    public String[] Informacje_miasto (Bilet _b) throws SQLException
+    {
+        String[] tablica_informacji = new String[2]; 
+        List<Miasto> lista_miast = new ArrayList<Miasto>();
+        lista_miast = getAllMiasta();
+        
+        for (Miasto s : lista_miast)
+        {
+          if (s.getId() == _b.getId_samolotu())
+          {
+              tablica_informacji[0]= s.getNazwa();
+              tablica_informacji[1]=Double.toString(s.getCena());
+          }
+        }
+        
+        return tablica_informacji;
+    }
     
 }

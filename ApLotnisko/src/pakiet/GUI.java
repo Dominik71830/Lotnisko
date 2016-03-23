@@ -5,6 +5,7 @@
  */
 package pakiet;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         f = new Functions();
         jPanelLogowanie.setVisible(false);
-        jPanelGlowny.setVisible(false);
+        //jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
@@ -763,17 +764,36 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonListaBiletowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaBiletowActionPerformed
+        try{
+
         jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(true);
-        
-        try {
+        List<Samolot> samoloty = new ArrayList<Samolot>();
+        List<Miasto> miasta = new ArrayList<Miasto>();
+        List<Bilet> bilety = new ArrayList<Bilet>();
+        samoloty = f.getAllSamoloty();
+        miasta = f.getAllMiasta();
+        bilety = f.getAllBilety();
+           // System.out.println(bilety.toString());
+        ModelTablicowyDoWyswietlaniaBiletow model = new ModelTablicowyDoWyswietlaniaBiletow(samoloty, bilety, miasta);
+        jTableBilety.setModel(model);
+            
+                
+                
+                
+            }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        /*try {
             f.fillJTableWithBilety(jTableBilety);
             f.changeColumnNames(jTableBilety);
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+      */
         
     }//GEN-LAST:event_jButtonListaBiletowActionPerformed
 
@@ -1136,6 +1156,7 @@ public class GUI extends javax.swing.JFrame {
         String Haslo_pracownika = jTextFieldRejestracjaHaslo.getText();
         String Haslo_pracownika_powtorzone = jTextFieldRejestracjaHasloPowt.getText();
         String Haslo_encrypt = null;
+        
         try {
             Haslo_encrypt = f.encrypt(Haslo_pracownika);
         } catch (Exception ex) {
@@ -1147,8 +1168,10 @@ public class GUI extends javax.swing.JFrame {
         nowy_pracownik.setImie(Imie_pracownika);
         nowy_pracownik.setNazwisko(Nazwisko_pracownika);
         nowy_pracownik.setHaslo(Haslo_encrypt);
-       JOptionPane.showMessageDialog(null, Imie_pracownika);
-        try {
+        
+       JOptionPane.showMessageDialog(null, "Zarejestrowano");
+        
+       try {
             f.addPracownik(nowy_pracownik);
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
