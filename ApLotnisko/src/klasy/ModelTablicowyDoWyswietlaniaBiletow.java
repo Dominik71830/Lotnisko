@@ -20,6 +20,7 @@ import pakiet.*;
  */
 public class ModelTablicowyDoWyswietlaniaBiletow extends AbstractTableModel{
     
+    public static final int OBJECT_COL = -1;
     public static final int ID_COL = 0;
     public static final int IMIE_COL = 1;
     public static final int NAZWISKO_COL = 2;
@@ -128,7 +129,9 @@ public class ModelTablicowyDoWyswietlaniaBiletow extends AbstractTableModel{
             
             case DATA_WYSTAWIENIA_BILETU:
                 return temp.getData_wystawienia_biletu();
-            
+                
+            case OBJECT_COL:
+			return temp;
                 
             default:
                 return temp.getId();

@@ -339,9 +339,10 @@ return (
         
         for (Miasto s : lista_miast)
         {
-          if (s.getId() == _b.getId_samolotu())
+          if (s.getId() == _b.getId_miejsca_docelowego())
           {
               tablica_informacji[0]= s.getNazwa();
+              
               tablica_informacji[1]=Double.toString(s.getCena());
           }
         }
