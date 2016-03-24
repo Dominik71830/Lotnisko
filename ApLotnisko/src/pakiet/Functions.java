@@ -350,4 +350,58 @@ return (
         return tablica_informacji;
     }
     
+    
+    public Miasto getMiasto (Bilet _b) throws SQLException{
+        Miasto miasto = null;
+        List<Miasto> miasta = new ArrayList<Miasto>();
+        miasta = getAllMiasta();
+        for(Miasto m : miasta)
+        {
+            
+            if(m.getId()==_b.getId_miejsca_docelowego())
+            {miasto = m;
+            //JOptionPane.showMessageDialog(null, miasto);
+            }
+            
+            
+        }
+        
+        return miasto;
+    }
+
+   
+    public void updateBilet(Bilet nowy_bilet) throws SQLException {
+       PreparedStatement pstm = null;
+       try{
+           String sql = "update bilety set data_lotu=?, imie_pasazera=?, nazwisko_pasazera=?, id_miejsca_docelowego=?, id_samolotu=? where id=?";
+           pstm = myConn.prepareStatement(sql);
+           pstm.setString(1, nowy_bilet.getData_lotu());
+           pstm.setString(2, nowy_bilet.getImie_pasazera());
+           pstm.setString(3, nowy_bilet.getNazwisko_pasazera());
+           pstm.setInt(4, nowy_bilet.getId_miejsca_docelowego());
+           pstm.setInt(5, nowy_bilet.getId_samolotu());
+           pstm.setInt(6, nowy_bilet.getId());
+           
+           pstm.execute();
+           
+       }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
+       finally{
+           pstm.close();
+       }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

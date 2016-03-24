@@ -38,7 +38,7 @@ public class GUI extends javax.swing.JFrame {
     static Samolot samolot;
     static Pracownik nowy_pracownik;
     static boolean update_mode;
-    static Bilet bilet_do_update;
+    static Bilet bilet_do_update=null;
     
     //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
     public GUI() throws SQLException, IOException {
@@ -926,10 +926,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonZarejestrujActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jPanelRejestracja.setVisible(false);
-        jPanelMapa.setVisible(true);
-        ImageIcon icon = new ImageIcon("src/obrazy/mapa.png");
-        jLabelMapa.setIcon(icon);
         
         try{
             String imie = jTextFieldImieRejestracji.getText();
@@ -937,7 +933,8 @@ public class GUI extends javax.swing.JFrame {
             String dzien = jTextFieldDD.getText();
             String miesiac = jTextFieldMM.getText();
             String rok = jTextFieldRRRR.getText();
-            String data = dzien + "-" + miesiac + "-" + rok;
+            String data = rok + "-" + miesiac + "-" + dzien;
+            
             
             nowy_bilet.setImie_pasazera(imie);
             nowy_bilet.setNazwisko_pasazera(nazwisko);
@@ -948,8 +945,62 @@ public class GUI extends javax.swing.JFrame {
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        jPanelRejestracja.setVisible(false);
+        jPanelMapa.setVisible(true);
+        ImageIcon icon=null;
+        Miasto m = null;
+        if(update_mode == false){
+            
+        icon = new ImageIcon("src/obrazy/mapa.png");
+        }
+        else 
+        {
+            
+            try {
+                m = f.getMiasto(bilet_do_update);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //JOptionPane.showMessageDialog(null, m.getNazwa());
+            switch(m.getNazwa()){
+                case "Moskwa":
+                    icon = new ImageIcon("src/obrazy/mapa - Moskwa.png");
+                    break;
+                case "Berlin":
+                    icon = new ImageIcon("src/obrazy/mapa - Berlin.png");
+                    break;
+                case "Paryz":
+                    icon = new ImageIcon("src/obrazy/mapa - Paryz.png");
+                    break;
+                case "Rzym":
+                    icon = new ImageIcon("src/obrazy/mapa - Rzym.png");
+                    break;
+                case "Londyn":
+                    icon = new ImageIcon("src/obrazy/mapa - Londyn.png");
+                    break;
+                case "Madryt":
+                    icon = new ImageIcon("src/obrazy/mapa - Madryt.png");
+                    break;
+                default:
+                {icon = new ImageIcon("src/obrazy/mapa.png");
+                break;
+                }
+                
+                
+            }
+            jLabelMiejsce.setText(m.getNazwa());
+            jLabelCena.setText(Double.toString(m.getCena()));
         
         
+        
+        
+        
+        
+        
+        
+        }
+        jLabelMapa.setIcon(icon);
+        //JOptionPane.showMessageDialog(null,m );
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jLabelMapaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMapaMousePressed
@@ -1032,16 +1083,20 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonWyborSamolotuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWyborSamolotuActionPerformed
       
+        if(wybrane != null)
         nowy_bilet.setId_miejsca_docelowego(wybrane.getId());
-         JOptionPane.showMessageDialog(null, wybrane);
-        
-        
+         //JOptionPane.showMessageDialog(null, wybrane);
+        else if (wybrane == null)
+         nowy_bilet.setId_miejsca_docelowego(bilet_do_update.getId_samolotu());
         
        jPanelWyborSamolotu.setVisible(true);
        jPanelMapa.setVisible(false);
        jTextAreaInfoOSamolocie.setVisible(false);
        
-        
+        if (update_mode == true)
+        {
+            jComboBoxSamoloty.setSelectedIndex(bilet_do_update.getId_samolotu()-1);
+        }
         
     }//GEN-LAST:event_jButtonWyborSamolotuActionPerformed
 
@@ -1246,7 +1301,13 @@ public class GUI extends javax.swing.JFrame {
         samolot = (Samolot) jComboBoxSamoloty.getSelectedItem();
         nowy_bilet.setId_samolotu(samolot.getId());
         try {
+            if (update_mode == false){
             f.addBilet(nowy_bilet);
+            }
+            else{
+                nowy_bilet.setId(bilet_do_update.getId());
+                f.updateBilet(nowy_bilet);
+            }
             jPanelWyborSamolotu.setVisible(false);
             JOptionPane.showMessageDialog(null,"Zakonczono pomyślnie");
             
@@ -1301,6 +1362,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDodajPracownikaActionPerformed
 
     private void jButtonEdycjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdycjaActionPerformed
+        nowy_bilet = new Bilet();
+        update_mode = true;
         int row = jTableBilety.getSelectedRow();
 				
 		if (row < 0) {
@@ -1309,7 +1372,17 @@ public class GUI extends javax.swing.JFrame {
 		}
         
         bilet_do_update = (Bilet) jTableBilety.getValueAt(row, ModelTablicowyDoWyswietlaniaBiletow.OBJECT_COL);
-        JOptionPane.showMessageDialog(null, bilet_do_update);
+        //JOptionPane.showMessageDialog(null, bilet_do_update.getData_lotu());
+        jTextFieldImieRejestracji.setText(bilet_do_update.getImie_pasazera());
+        jTextFieldNazwiskoRejestracji.setText(bilet_do_update.getNazwisko_pasazera());
+        jTextFieldDD.setText(bilet_do_update.getData_lotu().substring(8, 10));
+        jTextFieldMM.setText(bilet_do_update.getData_lotu().substring(5, 7));
+        jTextFieldRRRR.setText(bilet_do_update.getData_lotu().substring(0, 4));
+       
+        
+        
+        jPanelRejestracja.setVisible(true);
+        jPanelBilety.setVisible(false);
     }//GEN-LAST:event_jButtonEdycjaActionPerformed
 
     /**
