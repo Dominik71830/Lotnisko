@@ -56,6 +56,8 @@ public class GUI extends javax.swing.JFrame {
         jPanelSpisMiast.setVisible(false);
         jPanelRejestracjaPracownika.setVisible(false);
         update_mode = false;
+        f.playsound();
+        
         
         f.fillJComboboxWithPracownik(jComboBoxPracownik);
         

@@ -5,10 +5,15 @@
  */
 package pakiet;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Point;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.security.Key;
 import java.sql.Connection;
 import java.sql.Date;
@@ -22,6 +27,11 @@ import java.util.List;
 import java.util.Properties;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -31,6 +41,8 @@ import sun.misc.BASE64Encoder;
 
 import klasy.*;
 import net.proteanit.sql.DbUtils;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -391,6 +403,21 @@ return (
        finally{
            pstm.close();
        }
+    }
+
+    public void playsound() throws FileNotFoundException, IOException, LineUnavailableException, UnsupportedAudioFileException {
+        
+        Clip clip = AudioSystem.getClip();
+        /*InputStream in = new FileInputStream("src/muzyka/muzyka.wav");
+        AudioStream as = new AudioStream(in);
+        AudioPlayer.player.start(as);
+                */
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("src/muzyka/muzyka.wav"));         
+        //  clip.open(inputStream);
+        //  clip.start(); 
+        clip.open(inputStream);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        
     }
     
     
