@@ -117,7 +117,7 @@ public List<Pracownik> getAllPracownicy() throws SQLException {
 	
 	try{
 		myStmt = myConn.createStatement();
-		myRs = myStmt.executeQuery("select * from pracownicy");
+		myRs = myStmt.executeQuery("select * from pracownicy order by nazwisko");
 		
 		while(myRs.next()){
 			Pracownik temp = convertRowToPracownik(myRs);
@@ -134,7 +134,7 @@ public List<Pracownik> getAllPracownicy() throws SQLException {
     void fillJComboboxWithPracownik(JComboBox jComboBoxPracownik) throws SQLException {
         List<Pracownik> listaPracownikow = new ArrayList<Pracownik>();
         listaPracownikow = getAllPracownicy();
-        
+        jComboBoxPracownik.removeAllItems();
         for(Pracownik p : listaPracownikow){
            jComboBoxPracownik.addItem(p);
         }
@@ -431,16 +431,6 @@ return (
                         "Data wystawienia biletu: " + wybrany_bilet.getData_wystawienia_biletu();
         JOptionPane.showMessageDialog(null, Opis);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }

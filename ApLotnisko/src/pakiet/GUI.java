@@ -50,7 +50,7 @@ public class GUI extends javax.swing.JFrame {
         f = new Functions();
         jPanelWitajacy.setVisible(true);
         jPanelLogowanie.setVisible(false);
-        //jPanelGlowny.setVisible(false);
+        jPanelGlowny.setVisible(false);
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
@@ -1367,9 +1367,11 @@ public class GUI extends javax.swing.JFrame {
         
        try {
             f.addPracownik(nowy_pracownik);
+            f.fillJComboboxWithPracownik(jComboBoxPracownik);
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDodajPracownikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajPracownikaActionPerformed
