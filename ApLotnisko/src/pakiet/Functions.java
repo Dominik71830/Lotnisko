@@ -419,6 +419,18 @@ return (
         clip.loop(Clip.LOOP_CONTINUOUSLY);
         
     }
+
+    void wyswietlInfoOBilecie(Bilet wybrany_bilet, String[] tab_miejsce, String[] tab_samolot) {
+        String Opis = "Imie: " + wybrany_bilet.getImie_pasazera() + "\n" + 
+                        "Nazwisko: " + wybrany_bilet.getNazwisko_pasazera() + "\n" +
+                        "Data lotu: " + wybrany_bilet.getData_lotu() + "\n" +
+                        "Miejsce docelowe: " + tab_miejsce[0] + "\n" + 
+                        "Cena: " + tab_miejsce[1] + "\n" +
+                        "Model samolotu: " + tab_samolot[0] + "\n" + 
+                        "Nr samoloru: " + tab_samolot[1] + "\n" +
+                        "Data wystawienia biletu: " + wybrany_bilet.getData_wystawienia_biletu();
+        JOptionPane.showMessageDialog(null, Opis);
+    }
     
     
     

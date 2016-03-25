@@ -8,12 +8,15 @@ package pakiet;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -41,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
     static Bilet bilet_do_update=null;
     
     //static JComboBox<ArrayList<Pracownik>> jComboBoxPracownik;
-    public GUI() throws SQLException, IOException {
+    public GUI() throws SQLException, IOException, FileNotFoundException, LineUnavailableException, UnsupportedAudioFileException {
         initComponents();
         setLocationRelativeTo(null);
         f = new Functions();
@@ -97,6 +100,7 @@ public class GUI extends javax.swing.JFrame {
         jButtonPowrotBiletow = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jButtonEdycja = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanelRejestracja = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -311,6 +315,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Pokaż");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBiletyLayout = new javax.swing.GroupLayout(jPanelBilety);
         jPanelBilety.setLayout(jPanelBiletyLayout);
         jPanelBiletyLayout.setHorizontalGroup(
@@ -324,7 +335,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonPowrotBiletow, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(jButtonEdycja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonEdycja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -335,6 +347,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30)
                 .addComponent(jButtonEdycja)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonPowrotBiletow)
@@ -1387,6 +1401,31 @@ public class GUI extends javax.swing.JFrame {
         jPanelBilety.setVisible(false);
     }//GEN-LAST:event_jButtonEdycjaActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Bilet wybrany_bilet = new Bilet();
+        String [] tab_miejsce = null;
+        String [] tab_samolot = null;
+        
+        
+        
+        int row = jTableBilety.getSelectedRow();
+				
+		if (row < 0) {
+                    JOptionPane.showMessageDialog(null,"Wybierz bilet");				
+                    return;
+		}
+        
+        wybrany_bilet = (Bilet) jTableBilety.getValueAt(row, ModelTablicowyDoWyswietlaniaBiletow.OBJECT_COL);
+        
+        try {
+            tab_miejsce = f.Informacje_miasto(wybrany_bilet);
+            tab_samolot = f.Informacje_samolot(wybrany_bilet);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        f.wyswietlInfoOBilecie(wybrany_bilet, tab_miejsce, tab_samolot);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1418,7 +1457,15 @@ public class GUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUI().setVisible(true);
+                    try {
+                        new GUI().setVisible(true);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedAudioFileException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     
                     
                 } catch (SQLException ex) {
@@ -1435,6 +1482,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonBerlin;
     private javax.swing.JButton jButtonDodajPracownika;
