@@ -158,6 +158,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         //jPanelLogowanie.setVisible(false);
         jPanelLogowanie.setBackground(new java.awt.Color(255, 255, 255));
@@ -1379,83 +1380,51 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPowrotActionPerformed
 
     private void jButtonRzymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRzymActionPerformed
-        jTextAreaHistoriaMiasta.setText("stolica i największe miasto Włoch, położone w środkowej części kraju nad rzeką Tyber i "
-            + "Morzem Śródziemnym. Centrum administracyjne ma powierzchnię 1287 km² i liczbę ludności 2 868 104[2], będąc "
-            + "czwartym co do wielkości miastem Unii Europejskiej. Miasto metropolitalne Rzym utworzone z terenów byłej "
-            + "prowincji o tej samej nazwie ma 4 331 856 mieszkańców[3]. Rzym jest również stolicą regionu administracyjno-historycznego "
-            + "Lacjum (Lazio).Rzym jest metropolią o znaczeniu globalnym[4][5][6], a także dużym węzłem komunikacyjnym z "
-            + "jednym z największych międzynarodowych portów lotniczych w Europie, który obsługuje ponad 38 milionów "
-            + "pasażerów rocznie, rozbudowaną siecią autostrad i linii kolei dużych prędkości. Światowy ośrodek turystyczny z "
-            + "bardzo bogatymi zabytkami starożytności i średniowiecza (kościoły, bazyliki, Koloseum, pałace, akwedukty, "
-            + "fontanny i wiele innych budowli), niezwykle bogate muzea, nowoczesne osiedla mieszkaniowe na przedmieściach. "
-            + "W 1960 roku organizował Letnie Igrzyska Olimpijskie. W 2013 roku Rzym odwiedziło 8,6 mln turystów[7]. "
-            + "Znajdują się tu siedziby dwóch organizacji ONZ: organizacji do spraw Wyżywienia i Rolnictwa oraz "
-            + "Międzynarodowego Funduszu Rozwoju Rolnictwa.");
+        try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Rzym");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonRzymActionPerformed
 
     private void jButtonLondynActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLondynActionPerformed
-        jTextAreaHistoriaMiasta.setText(" miasto będące stolicą Wielkiej Brytanii i Anglii położone w jej południowo-wschodniej "
-            + "części.Położony nad Tamizą, jest trzecim największym miastem Europy po Moskwie i Stambule; jest także "
-            + "największym miastem Unii Europejskiej i jednym z większych miast świata zarówno w skali samego miasta, "
-            + "jak i aglomeracji. Liczba mieszkańców Londynu (w granicach tzw. Wielkiego Londynu) wynosi ok. 8,4 mln (2013 r.)"
-            + " na obszarze 1572 km²; cała zaś aglomeracja londyńska, łącznie ze wszystkimi przyległymi miejscowościami liczy "
-            + "ok. 13 mln mieszkańców[2][3] (obszar tzw. metropolia). Około 20% mieszkańców pochodzi z Azji, Afryki i Karaibów."
-            + "Współczesny Londyn jest największym centrum finansowym świata (od 2006 przed Nowym Jorkiem). Tutaj dokonuje "
-            + "się 30% światowego obrotu walutami i 40% światowego obrotu euroobligacjami. W Londynie usytuowanych jest "
-            + "kilkaset banków, największa giełda w Europie (trzecia na świecie), liczne towarzystwa ubezpieczeniowe i "
-            + "inwestycyjne. Londyn jest także ogromnym ośrodkiem medialnym.");
+        try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Londyn");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonLondynActionPerformed
 
     private void jButtonParyzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonParyzActionPerformed
-        jTextAreaHistoriaMiasta.setText(" stolica i największa aglomeracja Francji, położona w centrum Basenu Paryskiego, nad Sekwaną (La Seine). Miasto stanowi centrum polityczne, ekonomiczne i kulturalne kraju."
-            +"W granicach administracyjnych Paryża zamieszkuje ponad 2 mln osób (według danych z 2010 było to 2 243 833[1]), "
-            + "w tzw. Wielkim Paryżu ok. 10 mln, a w całym zespole miejskim ponad 12 mln (w 2007 paryską przestrzeń "
-            + "aglomeracji zamieszkiwało 12 067 000 osób). Aglomeracja paryska konkuruje tym samym pod względem liczby "
-            + "ludności w Unii Europejskiej z Londynem.");
+       try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Paryz");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonParyzActionPerformed
 
     private void jButtonMadrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMadrytActionPerformed
-        jTextAreaHistoriaMiasta.setText("stolica i największe miasto Hiszpanii, położony w środkowej części kraju na Wyżynie Kastylijskiej u podnóża Sierra de Guadarrama nad rzeką Manzanares.\n"
-            +"Centrum administracyjne ma powierzchnię 606 km² i liczbę ludności 3,2 mln[1], natomiast region autonomiczny "
-            + "Comunidad de Madrid ma powierzchnię 8022 km² i liczbę ludności prawie 6,5 mln[2][3]. Jest to trzecie co do "
-            + "wielkości miasto Unii Europejskiej (po Londynie i Berlinie) oraz trzeci co do wielkości monocentryczny obszar "
-            + "miejski w UE (po Londynie i Paryżu)[4]. Madryt jest siedzibą rządu, parlamentu, ministerstw, agencji i innych "
-            + "przedstawicielstw międzynarodowych, jak i też oficjalną rezydencją króla Hiszpanii[5]. Na płaszczyźnie "
-            + "ekonomicznej Madryt jest czwartym najbogatszym miastem w Europie (po Londynie, Paryżu i Moskwie) oraz "
-            + "trzecim w ramach UE[6].");
+        try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Madryt");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonMadrytActionPerformed
 
     private void jButtonBerlinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBerlinActionPerformed
-        jTextAreaHistoriaMiasta.setText(" stolica, siedziba rządu Republiki Federalnej Niemiec. Największe miasto Niemiec, na"
-            + " prawach kraju związkowego. Zajmuje powierzchnię ok. 892 km², zamieszkuje je 3,4 mln osób. Jest trzecim "
-            + "największym (po Londynie i Paryżu)[2] miastem w Unii Europejskiej.Berlin jest podzielony na dwanaście okręgów "
-            + "administracyjnych (Bezirk). Przez przestrzeń miejską przepływają m.in. rzeki Sprewa i Hawela, a ponadto "
-            + "znajduje się wiele jezior i zatok, w tym największe Müggelsee.Pierwsza wzmianka o mieście pochodzi z 1237. "
-            + "Berlin pełnił rolę historycznej stolicy Brandenburgii, Prus, Cesarstwa Niemieckiego, Republiki Weimarskiej i "
-            + "III Rzeszy. Po 1945 wschodnia część miasta była stolicą Niemieckiej Republiki Demokratycznej, natomiast "
-            + "pozostała tworzyła Berlin Zachodni – otoczona murem (od 1961) enklawa na terenie NRD. Po zjednoczeniu Niemiec "
-            + "w 1990 Berlin został ponownie stolicą Niemiec, siedzibą prezydenta (od 1994), niemieckiego Bundestagu (od 1999)"
-            + " i Bundesratu (od 2000).");
+        try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Berlin");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonBerlinActionPerformed
 
     private void jButtonMoskwaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoskwaActionPerformed
-        jTextAreaHistoriaMiasta.setText("Stolica Rosji i największe miasto tego kraju. Jest także największym miastem Europy, "
-            + "liczącym 12,1 mln mieszkańców (stan na 1 stycznia 2014[1]), przy czym cała aglomeracja liczy 15,512 mln "
-            + "mieszkańców (2012)[4]. Jeden z najważniejszych ośrodków politycznych, gospodarczych, kulturowych, religijnych, "
-            + "finansowych, edukacyjnych, komunikacyjnych oraz turystycznych Rosji.Moskwa jest siedzibą najwyższych władz "
-            + "państwowych Rosji w tym: prezydenta, parlamentu (Dumy Państwowej i Rady Federacji) oraz rządu. W przeszłości "
-            + "miasto było stolicą: Księstwa Moskiewskiego (1213-1328), Wielkiego Księstwa Moskiewskiego (1328-1547), "
-            + "Carstwa Rosyjskiego (1547-1712), Rosji Radzieckiej (1917-1922) i Związku Radzieckiego (1922-1991). Moskwa "
-            + "jest także stolicą Rosyjskiego Kościoła Prawosławnego. Znajduje się tu ponad 600 świątyń różnych wyznań, w "
-            + "tym Cerkiew Chrystusa Zbawiciela – największa na świecie cerkiew prawosławna, a także Monaster "
-            + "Daniłowski – siedziba patriarchy Moskwy i całej Rusi. Podczas II wojny światowej Moskwa jako jedyna "
-            + "stolica europejska odparła ataki niemieckie uzyskując tytuł „miasta-bohatera”.Miasto jest obecnie jednym z"
-            + " najważniejszych ośrodków finansowych świata. W rankingu miast światowych pod względem kosztów życia "
-            + "Moskwa zajęła w 2006 pierwsze miejsce jako najdroższe miasto świata, w 2009 była trzecia[5]. W rankingu "
-            + "miast światowych miesięcznika „Forbes” Moskwa zajęła w 2011 po raz kolejny z rzędu pierwsze miejsce pod "
-            + "względem liczby zamieszkujących ją miliarderów (79 osób)[6]. Wcześniej, w 2009, w rankingu tym przejściowo"
-            + " z pierwszego spadła na trzecie miejsce[7].W 1990 historyczne centrum miasta (Kreml oraz plac Czerwony "
-            + "wraz z nawiązującymi do nich obiektami) zostało wpisane na Listę światowego dziedzictwa UNESCO.");
+        try {
+            f.wstaw_opis(jTextAreaHistoriaMiasta, "Moskwa");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonMoskwaActionPerformed
 
     private void jButtonDodajPracownikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajPracownikaActionPerformed

@@ -35,6 +35,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.TableColumnModel;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -60,7 +61,7 @@ public class Functions {
     public Functions() throws FileNotFoundException, IOException, SQLException {
         
                 Properties props = new Properties();
-		props.load(new FileInputStream("properties.properties"));
+		props.load(new FileInputStream("src/pakiet/Dane_do_bazy.properties"));
 		
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");
@@ -432,5 +433,29 @@ return (
         JOptionPane.showMessageDialog(null, Opis);
     }
 
+   public void wstaw_opis(JTextArea pole_do_wpisania, String s) throws FileNotFoundException, IOException
+   {
+                Properties props = new Properties();
+		props.load(new FileInputStream("src/pakiet/Opisy_miast.properties"));
+		
+		String opis = props.getProperty(s);
+                pole_do_wpisania.setText(opis);
+   }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
