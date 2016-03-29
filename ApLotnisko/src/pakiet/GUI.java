@@ -964,10 +964,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         jPanelLogowanie.setVisible(true);
+        jTextFieldHaslo.setText("");
         this.setSize(350, 270);
         this.setLocationRelativeTo(null);
         this.setTitle("Logowanie");
-        jTextFieldHaslo.setText("");
+        
         jPanelWitajacy.setVisible(false);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -1318,6 +1319,7 @@ public class GUI extends javax.swing.JFrame {
         }
        jPanelRejestracjaPracownika.setVisible(false);
        jPanelLogowanie.setVisible(true);
+       jTextFieldHaslo.setText("");
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1343,6 +1345,12 @@ public class GUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Edycja biletu. Etap 1/3");
         jPanelRejestracja.setVisible(true);
+        /*jTextFieldImieRejestracji.setText("");
+        jTextFieldNazwiskoRejestracji.setText("");
+        jTextFieldDD.setText("");
+        jTextFieldMM.setText("");
+        jTextFieldRRRR.setText("");*/
+        
         jPanelBilety.setVisible(false);
     }//GEN-LAST:event_jButtonEdycjaActionPerformed
 
@@ -1433,6 +1441,10 @@ public class GUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jPanelGlowny.setVisible(false);
         jPanelRejestracjaPracownika.setVisible(true);
+        jTextFieldRejestracjaImie.setText("");
+        jTextFieldRejestracjaNazwisko.setText("");
+        jTextFieldRejestracjaHaslo.setText("");
+        jTextFieldRejestracjaHasloPowt.setText("");
     }//GEN-LAST:event_jButtonDodajPracownikaActionPerformed
 
     private void jButtonListaBiletowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaBiletowActionPerformed
@@ -1476,6 +1488,7 @@ public class GUI extends javax.swing.JFrame {
         this.setBounds(0, 0, 890, 580);
         this.setLocationRelativeTo(null);
         jPanelSpisMiast.setVisible(true);
+        jTextAreaHistoriaMiasta.setText("");
         jPanelGlowny.setVisible(false);
         this.setTitle("Lista miast");
 
@@ -1497,6 +1510,12 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonZarejestrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZarejestrujActionPerformed
         jPanelGlowny.setVisible(false);
         jPanelRejestracja.setVisible(true);
+        jTextFieldImieRejestracji.setText("");
+        jTextFieldNazwiskoRejestracji.setText("");
+        jTextFieldDD.setText("");
+        jTextFieldMM.setText("");
+        jTextFieldRRRR.setText("");
+        
          this.setBounds(0, 0, 380, 340);
         this.setLocationRelativeTo(null);
         this.setTitle("Rejestracja biletu. Etap 1/3");
