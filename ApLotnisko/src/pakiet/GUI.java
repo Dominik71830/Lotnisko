@@ -37,10 +37,10 @@ public class GUI extends javax.swing.JFrame {
      */
     
     static Functions f;
-    static Bilet nowy_bilet;
-    static Miasto wybrane;
-    static Samolot samolot;
-    static Pracownik nowy_pracownik;
+    static Bilet nowy_bilet=null;
+    static Miasto wybrane=null;
+    static Samolot samolot=null;
+    static Pracownik nowy_pracownik=null;
     static boolean update_mode;
     static Bilet bilet_do_update=null;
     
@@ -952,13 +952,13 @@ public class GUI extends javax.swing.JFrame {
                 
                 
         try {
-            Pracownik p = (Pracownik) jComboBoxPracownik.getSelectedItem();
+            Pracownik p = (Pracownik) jComboBoxPracownik.getSelectedItem();// Wybranie pracownika z bazy
             String haslo = jTextFieldHaslo.getText();
-            String encryptedPassword = f.encrypt(haslo);
+            String encryptedPassword = f.encrypt(haslo);//zenkryptowanie hasła
             //if(haslo.equals("")) throw new Exception();
             String hasloPracownika = p.getHaslo();
             
-            if(f.compare(encryptedPassword, hasloPracownika)){
+            if(f.compare(encryptedPassword, hasloPracownika)){ //jeśli podanehasło jest poprawne
                 System.out.println("Zalogowano " + p);
                 jPanelLogowanie.setVisible(false);
                 jPanelGlowny.setVisible(true);
@@ -970,7 +970,7 @@ public class GUI extends javax.swing.JFrame {
                 
                 this.setTitle("Zalogowano na konto "+p);
                 
-                if(p.getImie().equals("Administrator")){
+                if(p.getImie().equals("Administrator")){//jeśli admin to dodatkowy przycisk
                    jButtonDodajPracownika.setVisible(true);
                 }
             }
@@ -1012,6 +1012,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
         try{
+            //Pobieranie danych z textfieldow
             String imie = jTextFieldImieRejestracji.getText();
             String nazwisko = jTextFieldNazwiskoRejestracji.getText();
             String dzien = jTextFieldDD.getText();
@@ -1019,6 +1020,7 @@ public class GUI extends javax.swing.JFrame {
             String rok = jTextFieldRRRR.getText();
             
             try{
+                //sprawdzenie czy ktores z podanych textfieldow jest bledne
                 if (imie.trim().length()  ==0
                     ||
                     nazwisko.trim().length() ==0
@@ -1042,7 +1044,7 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Błędne dane");
                 return;
             }
-            
+            //sprawdzenie poprawnosci daty
                 if (dzien.trim().length()==1) {dzien = '0'+dzien;}
                 if (miesiac.trim().length()==1) {miesiac = '0'+miesiac;}
                 String data = rok + "-" + miesiac + "-" + dzien;
@@ -1050,7 +1052,7 @@ public class GUI extends javax.swing.JFrame {
             
             
             
-            
+            //wstawianie danych do utworzonego biletu
             nowy_bilet.setImie_pasazera(imie);
             nowy_bilet.setNazwisko_pasazera(nazwisko);
             nowy_bilet.setData_lotu(data);
@@ -1081,6 +1083,7 @@ public class GUI extends javax.swing.JFrame {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             //JOptionPane.showMessageDialog(null, m.getNazwa());
+            //Wstawianie konretnej ikony dla danego miasta
             switch(m.getNazwa()){
                 case "Moskwa":
                     icon = new ImageIcon("src/obrazy/mapa - Moskwa.png");
@@ -1107,6 +1110,7 @@ public class GUI extends javax.swing.JFrame {
                 
                 
             }
+            //Wstawiane w labele informacje o cenie i nazwa miasta
             jLabelMiejsce.setText(m.getNazwa());
             jLabelCena.setText(Double.toString(m.getCena()));
         
@@ -1210,6 +1214,7 @@ public class GUI extends javax.swing.JFrame {
         nowy_bilet.setId_miejsca_docelowego(wybrane.getId());
          //JOptionPane.showMessageDialog(null, wybrane);
         else if (wybrane == null)
+            //Nie zaszła zmiana miasta 
          nowy_bilet.setId_miejsca_docelowego(bilet_do_update.getId_samolotu());
         
        jPanelWyborSamolotu.setVisible(true);
@@ -1217,6 +1222,7 @@ public class GUI extends javax.swing.JFrame {
        jTextAreaInfoOSamolocie.setVisible(false);
        jTextAreaInfoOSamolocie.setText("");
        
+       //jesli trwa edycja to ustawia konkretny objekt w comboboxie
         if (update_mode == true)
         {
             jComboBoxSamoloty.setSelectedIndex(bilet_do_update.getId_samolotu()-1);
@@ -1228,6 +1234,7 @@ public class GUI extends javax.swing.JFrame {
         jTextAreaInfoOSamolocie.setText("");
         jTextAreaInfoOSamolocie.setVisible(false);
         ImageIcon icon = new ImageIcon();
+        //Ustawianie ikon do danego objektu w comboboxie
         switch(jComboBoxSamoloty.getSelectedItem().toString()){
             case "Airbus A380":
                 icon = new ImageIcon("src/obrazy/Airbus A380.jpg");
@@ -1269,6 +1276,7 @@ public class GUI extends javax.swing.JFrame {
         jTextAreaInfoOSamolocie.setLineWrap(true);
         jTextAreaInfoOSamolocie.setWrapStyleWord(true);
         jTextAreaInfoOSamolocie.setEditable(false);
+        //Ustawianie informacji do danego samolotu
         switch(jComboBoxSamoloty.getSelectedItem().toString()){
             case "Boeing 777":
                 jTextAreaInfoOSamolocie.setText("Dwusilnikowy szerokokadłubowy samolot pasażerski produkowany przez amerykańską "
@@ -1321,7 +1329,7 @@ public class GUI extends javax.swing.JFrame {
         nowy_bilet.setId_samolotu(samolot.getId());
         try {
             if (update_mode == false){
-                //tu
+                //sprawdzanie czy samolot jest zapelniony
                 if(f.samolotZapelniony(samolot)){
                     JOptionPane.showMessageDialog(null, "Samolot zapełniony");
                     throw new Exception();
@@ -1329,7 +1337,7 @@ public class GUI extends javax.swing.JFrame {
             f.addBilet(nowy_bilet);
             }
             else{
-                //tu
+                //Sprawdzanie czy samolot jest zapełniony
                 if(nowy_bilet.getId_samolotu()!=bilet_do_update.getId_samolotu() && f.samolotZapelniony(samolot)){
                     JOptionPane.showMessageDialog(null, "Samolot zapełniony");
                     throw new Exception();
@@ -1338,9 +1346,16 @@ public class GUI extends javax.swing.JFrame {
                 f.updateBilet(nowy_bilet);
                 update_mode = false;
             }
+            nowy_bilet = null;
+            samolot = null;
+            wybrane = null; 
+            nowy_pracownik = null;
+            bilet_do_update = null;
+            
             jPanelWyborSamolotu.setVisible(false);
             JOptionPane.showMessageDialog(null,"Zakonczono pomyślnie");
             
+            //Utworzenie 3 list i wypełnienie
         List<Samolot> samoloty = new ArrayList<Samolot>();
         List<Miasto> miasta = new ArrayList<Miasto>();
         List<Bilet> bilety = new ArrayList<Bilet>();
@@ -1348,6 +1363,7 @@ public class GUI extends javax.swing.JFrame {
         miasta = f.getAllMiasta();
         bilety = f.getAllBilety();
            // System.out.println(bilety.toString());
+        //Utworzenie modelu tablicowego
         ModelTablicowyDoWyswietlaniaBiletow model = new ModelTablicowyDoWyswietlaniaBiletow(samoloty, bilety, miasta);
         jTableBilety.setModel(model);
             jPanelBilety.setVisible(true);
@@ -1359,12 +1375,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonKoniecActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        //Pobieranie informacji o nowym pracowniku
         String Imie_pracownika = jTextFieldRejestracjaImie.getText();
         String Nazwisko_pracownika = jTextFieldRejestracjaNazwisko.getText();
         String Haslo_pracownika = jTextFieldRejestracjaHaslo.getText();
         String Haslo_pracownika_powtorzone = jTextFieldRejestracjaHasloPowt.getText();
-        
+        //Sprawdzanie czy w textfieldach nie ma błędów
         if(Imie_pracownika.trim().length() == 0 
            ||
            Nazwisko_pracownika.trim().length() == 0
@@ -1382,14 +1398,14 @@ public class GUI extends javax.swing.JFrame {
         
         
         String Haslo_encrypt = null;
-        
+        //Enkryptowanie hasła
         try {
             Haslo_encrypt = f.encrypt(Haslo_pracownika);
         } catch (Exception ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        //Wstawianie danych do nowego pracownika
         nowy_pracownik = new Pracownik();
         nowy_pracownik.setImie(Imie_pracownika);
         nowy_pracownik.setNazwisko(Nazwisko_pracownika);
@@ -1398,7 +1414,9 @@ public class GUI extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "Zarejestrowano");
         
        try {
+           //Dodawanie pracownika
             f.addPracownik(nowy_pracownik);
+            //wypełnij combobox z pracownikiem
             f.fillJComboboxWithPracownik(jComboBoxPracownik);
         } catch (SQLException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1412,17 +1430,21 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonEdycjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdycjaActionPerformed
+        //tworzenie nowego biletu
         nowy_bilet = new Bilet();
         update_mode = true;
         int row = jTableBilety.getSelectedRow();
 				
+        //jeśli bilet nie zostal wybrany
 		if (row < 0) {
                     JOptionPane.showMessageDialog(null,"Wybierz bilet");				
                     return;
 		}
         
+        
         bilet_do_update = (Bilet) jTableBilety.getValueAt(row, ModelTablicowyDoWyswietlaniaBiletow.OBJECT_COL);
         //JOptionPane.showMessageDialog(null, bilet_do_update.getData_lotu());
+        //wypełnianie textfieldów z bazy
         jTextFieldImieRejestracji.setText(bilet_do_update.getImie_pasazera());
         jTextFieldNazwiskoRejestracji.setText(bilet_do_update.getNazwisko_pasazera());
         jTextFieldDD.setText(bilet_do_update.getData_lotu().substring(8, 10));
@@ -1455,7 +1477,7 @@ public class GUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Wybierz bilet");				
                     return;
 		}
-        
+        //Wyselekcjonowanie biletu z tablicy
         wybrany_bilet = (Bilet) jTableBilety.getValueAt(row, ModelTablicowyDoWyswietlaniaBiletow.OBJECT_COL);
         
         try {
@@ -1476,6 +1498,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPowrotActionPerformed
 
     private void jButtonRzymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRzymActionPerformed
+        //Wstawianie informacji o miescie
         try {
             f.wstaw_opis(jTextAreaHistoriaMiasta, "Rzym");
         } catch (IOException ex) {
@@ -1529,6 +1552,8 @@ public class GUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jPanelGlowny.setVisible(false);
         jPanelRejestracjaPracownika.setVisible(true);
+        
+        //Czyszczenie textfieldow
         jTextFieldRejestracjaImie.setText("");
         jTextFieldRejestracjaNazwisko.setText("");
         jTextFieldRejestracjaHaslo.setText("");
@@ -1544,13 +1569,15 @@ public class GUI extends javax.swing.JFrame {
             jPanelGlowny.setVisible(false);
             jPanelBilety.setVisible(true);
 
-            List<Samolot> samoloty = new ArrayList<Samolot>();
-            List<Miasto> miasta = new ArrayList<Miasto>();
-            List<Bilet> bilety = new ArrayList<Bilet>();
-            samoloty = f.getAllSamoloty();
+            List<Samolot> samoloty = new ArrayList<Samolot>(); //Utworzenie listy samolotow
+            List<Miasto> miasta = new ArrayList<Miasto>(); //utworzenie listy miast
+            List<Bilet> bilety = new ArrayList<Bilet>(); //utworzenie listy biletow
+            //wypelnianie 3 list
+            samoloty = f.getAllSamoloty(); 
             miasta = f.getAllMiasta();
             bilety = f.getAllBilety();
             // System.out.println(bilety.toString());
+            //utworzenie modelu tablicowego
             ModelTablicowyDoWyswietlaniaBiletow model = new ModelTablicowyDoWyswietlaniaBiletow(samoloty, bilety, miasta);
             jTableBilety.setModel(model);
 
@@ -1580,6 +1607,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelGlowny.setVisible(false);
         this.setTitle("Lista miast");
 
+        //stworzenie obrazków
         ImageIcon i_Moskwa = new ImageIcon("src/obrazy/moskwa.jpg");
         ImageIcon i_Paryz = new ImageIcon("src/obrazy/paryz.jpg");
         ImageIcon i_Berlin = new ImageIcon("src/obrazy/berlin.jpg");
@@ -1587,6 +1615,7 @@ public class GUI extends javax.swing.JFrame {
         ImageIcon i_Londyn = new ImageIcon("src/obrazy/londyn.png");
         ImageIcon i_Madryt = new ImageIcon("src/obrazy/madryt.jpg");
 
+        //ustawienie obrazków
         jButtonMoskwa.setIcon(i_Moskwa);
         jButtonLondyn.setIcon(i_Londyn);
         jButtonMadryt.setIcon(i_Madryt);
@@ -1598,6 +1627,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonZarejestrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZarejestrujActionPerformed
         jPanelGlowny.setVisible(false);
         jPanelRejestracja.setVisible(true);
+        //wyzerowanie textfieldów
         jTextFieldImieRejestracji.setText("");
         jTextFieldNazwiskoRejestracji.setText("");
         jTextFieldDD.setText("");
@@ -1607,7 +1637,7 @@ public class GUI extends javax.swing.JFrame {
          this.setBounds(0, 0, 380, 340);
         this.setLocationRelativeTo(null);
         this.setTitle("Rejestracja biletu. Etap 1/3");
-        nowy_bilet = new Bilet();
+        nowy_bilet = new Bilet();//utworzee nowego biletu
     }//GEN-LAST:event_jButtonZarejestrujActionPerformed
 
     private void jTextFieldDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDDActionPerformed
