@@ -121,6 +121,8 @@ public class GUI extends javax.swing.JFrame {
         jLabelMiejsce = new javax.swing.JLabel();
         jLabelCena = new javax.swing.JLabel();
         jButtonWyborSamolotu = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanelWyborSamolotu = new javax.swing.JPanel();
         jComboBoxSamoloty = new javax.swing.JComboBox();
         jLabelObrazekSamolotu = new javax.swing.JLabel();
@@ -404,6 +406,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setText("DD");
 
         jTextFieldDD.setBackground(new java.awt.Color(0, 204, 255));
+        jTextFieldDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDDActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("MM");
 
@@ -422,6 +429,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jTextFieldImieRejestracji.setBackground(new java.awt.Color(0, 204, 255));
+        jTextFieldImieRejestracji.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldImieRejestracjiActionPerformed(evt);
+            }
+        });
 
         jTextFieldNazwiskoRejestracji.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -502,10 +514,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabelMiejsce.setText("Miejsce: ");
-
-        jLabelCena.setText("Cena: ");
-
         jButtonWyborSamolotu.setBackground(new java.awt.Color(0, 204, 255));
         jButtonWyborSamolotu.setText("Dalej");
         jButtonWyborSamolotu.addActionListener(new java.awt.event.ActionListener() {
@@ -513,6 +521,10 @@ public class GUI extends javax.swing.JFrame {
                 jButtonWyborSamolotuActionPerformed(evt);
             }
         });
+
+        jLabel20.setText("Wybrane miejsce:");
+
+        jLabel21.setText("Cena:");
 
         javax.swing.GroupLayout jPanelMapaLayout = new javax.swing.GroupLayout(jPanelMapa);
         jPanelMapa.setLayout(jPanelMapaLayout);
@@ -524,13 +536,20 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jButtonWyborSamolotu))
                     .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabelMiejsce, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabelCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelMiejsce, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
-                .addGap(83, 83, 83)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMapaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelCena, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMapaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(101, 101, 101)
                 .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMapaLayout.setVerticalGroup(
             jPanelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,10 +558,14 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelMapaLayout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabelMiejsce)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCena)
+                .addComponent(jLabelMiejsce, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelCena, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonWyborSamolotu)
                 .addGap(56, 56, 56))
@@ -985,16 +1008,45 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.setTitle("Rejestracja biletu. Etap 2/3");
-        this.setBounds(0, 0, 780, 570);
-        this.setLocationRelativeTo(null);
+        
         try{
             String imie = jTextFieldImieRejestracji.getText();
             String nazwisko = jTextFieldNazwiskoRejestracji.getText();
             String dzien = jTextFieldDD.getText();
             String miesiac = jTextFieldMM.getText();
             String rok = jTextFieldRRRR.getText();
-            String data = rok + "-" + miesiac + "-" + dzien;
+            
+            try{
+                if (imie.trim().length()  ==0
+                    ||
+                    nazwisko.trim().length() ==0
+                    ||
+                    dzien.trim().length() > 2
+                    ||
+                    miesiac.trim().length() > 2
+                    ||
+                    rok.trim().length() > 4
+                    ||
+                    Integer.parseInt(dzien) < 1 || Integer.parseInt(dzien) >31
+                    ||
+                    Integer.parseInt(miesiac) < 1 || Integer.parseInt(miesiac) > 12
+                    ||
+                    Integer.parseInt(rok) < 2016 || Integer.parseInt(rok) > 2999
+                    )
+                    throw new Exception();
+                }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Błędne dane");
+                return;
+            }
+            
+                if (dzien.trim().length()==1) {dzien = '0'+dzien;}
+                if (miesiac.trim().length()==1) {miesiac = '0'+miesiac;}
+                String data = rok + "-" + miesiac + "-" + dzien;
+            
+            
+            
             
             
             nowy_bilet.setImie_pasazera(imie);
@@ -1006,6 +1058,10 @@ public class GUI extends javax.swing.JFrame {
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        this.setTitle("Rejestracja biletu. Etap 2/3");
+        this.setBounds(0, 0, 780, 570);
+        this.setLocationRelativeTo(null);
+        
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(true);
         ImageIcon icon=null;
@@ -1157,6 +1213,7 @@ public class GUI extends javax.swing.JFrame {
        jPanelWyborSamolotu.setVisible(true);
        jPanelMapa.setVisible(false);
        jTextAreaInfoOSamolocie.setVisible(false);
+       jTextAreaInfoOSamolocie.setText("");
        
         if (update_mode == true)
         {
@@ -1166,7 +1223,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonWyborSamolotuActionPerformed
 
     private void jComboBoxSamolotyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSamolotyActionPerformed
-        jTextAreaInfoOSamolocie.setText(null);
+        jTextAreaInfoOSamolocie.setText("");
         jTextAreaInfoOSamolocie.setVisible(false);
         ImageIcon icon = new ImageIcon();
         switch(jComboBoxSamoloty.getSelectedItem().toString()){
@@ -1262,11 +1319,22 @@ public class GUI extends javax.swing.JFrame {
         nowy_bilet.setId_samolotu(samolot.getId());
         try {
             if (update_mode == false){
+                //tu
+                if(f.samolotZapelniony(samolot)){
+                    JOptionPane.showMessageDialog(null, "Samolot zapełniony");
+                    throw new Exception();
+                }
             f.addBilet(nowy_bilet);
             }
             else{
+                //tu
+                if(nowy_bilet.getId_samolotu()!=bilet_do_update.getId_samolotu() && f.samolotZapelniony(samolot)){
+                    JOptionPane.showMessageDialog(null, "Samolot zapełniony");
+                    throw new Exception();
+                }
                 nowy_bilet.setId(bilet_do_update.getId());
                 f.updateBilet(nowy_bilet);
+                update_mode = false;
             }
             jPanelWyborSamolotu.setVisible(false);
             JOptionPane.showMessageDialog(null,"Zakonczono pomyślnie");
@@ -1289,12 +1357,28 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonKoniecActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setSize(350, 270);
-        this.setTitle("Panel główny");
+        
         String Imie_pracownika = jTextFieldRejestracjaImie.getText();
         String Nazwisko_pracownika = jTextFieldRejestracjaNazwisko.getText();
         String Haslo_pracownika = jTextFieldRejestracjaHaslo.getText();
         String Haslo_pracownika_powtorzone = jTextFieldRejestracjaHasloPowt.getText();
+        
+        if(Imie_pracownika.trim().length() == 0 
+           ||
+           Nazwisko_pracownika.trim().length() == 0
+           ||
+           Haslo_pracownika.trim().length() == 0
+           ||
+           Haslo_pracownika_powtorzone.trim().length() == 0
+           ||
+           !Haslo_pracownika.equals(Haslo_pracownika_powtorzone))
+        {
+            JOptionPane.showMessageDialog(null, "Błędne dane");
+            return;
+        }
+        
+        
+        
         String Haslo_encrypt = null;
         
         try {
@@ -1321,6 +1405,8 @@ public class GUI extends javax.swing.JFrame {
        jPanelLogowanie.setVisible(true);
        jTextFieldHaslo.setText("");
        
+       this.setSize(350, 270);
+        this.setTitle("Logowanie");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonEdycjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEdycjaActionPerformed
@@ -1522,6 +1608,14 @@ public class GUI extends javax.swing.JFrame {
         nowy_bilet = new Bilet();
     }//GEN-LAST:event_jButtonZarejestrujActionPerformed
 
+    private void jTextFieldDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDDActionPerformed
+
+    private void jTextFieldImieRejestracjiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldImieRejestracjiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldImieRejestracjiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1611,6 +1705,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -441,6 +441,21 @@ return (
 		String opis = props.getProperty(s);
                 pole_do_wpisania.setText(opis);
    }
+
+    public boolean samolotZapelniony(Samolot samolot) throws SQLException {
+        List<Bilet> bilety = new ArrayList<Bilet>();
+        bilety = getAllBilety();
+        
+        int licznik = 0;
+        
+        for(Bilet b : bilety){
+            if(samolot.getId() == b.getId_samolotu()){
+                licznik++;
+            }
+        }
+        //JOptionPane.showMessageDialog(null, licznik);
+        return (licznik>4 ? true : false);
+    }
     
     
     
