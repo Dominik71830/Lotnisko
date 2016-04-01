@@ -85,10 +85,10 @@ public class GUI extends javax.swing.JFrame {
         jPanelLogowanie = new javax.swing.JPanel();
         jComboBoxPracownik = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldHaslo = new javax.swing.JTextField();
         jButtonZaloguj = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jTextFieldHaslo = new javax.swing.JPasswordField();
         jPanelGlowny = new javax.swing.JPanel();
         jButtonZarejestruj = new javax.swing.JButton();
         jButtonListaWycieczek = new javax.swing.JButton();
@@ -148,10 +148,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextFieldRejestracjaImie = new javax.swing.JTextField();
         jTextFieldRejestracjaNazwisko = new javax.swing.JTextField();
-        jTextFieldRejestracjaHaslo = new javax.swing.JTextField();
-        jTextFieldRejestracjaHasloPowt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        jTextFieldRejestracjaHaslo = new javax.swing.JPasswordField();
+        jTextFieldRejestracjaHasloPowt = new javax.swing.JPasswordField();
         jPanelWitajacy = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -171,8 +171,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Hasło:");
 
-        jTextFieldHaslo.setBackground(new java.awt.Color(51, 204, 255));
-
         jButtonZaloguj.setBackground(new java.awt.Color(51, 204, 255));
         jButtonZaloguj.setText("Dalej");
         jButtonZaloguj.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +182,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel13.setText("Wybór Użytkownika");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/obrazy/employee.jpg"))); // NOI18N
+
+        jTextFieldHaslo.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout jPanelLogowanieLayout = new javax.swing.GroupLayout(jPanelLogowanie);
         jPanelLogowanie.setLayout(jPanelLogowanieLayout);
@@ -197,9 +197,9 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel13))
                         .addGap(47, 47, 47)
-                        .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxPracownik, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldHaslo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelLogowanieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxPracownik, 0, 173, Short.MAX_VALUE)
+                            .addComponent(jTextFieldHaslo)))
                     .addGroup(jPanelLogowanieLayout.createSequentialGroup()
                         .addComponent(jButtonZaloguj, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -774,10 +774,6 @@ public class GUI extends javax.swing.JFrame {
 
         jTextFieldRejestracjaNazwisko.setBackground(new java.awt.Color(0, 204, 255));
 
-        jTextFieldRejestracjaHaslo.setBackground(new java.awt.Color(0, 204, 255));
-
-        jTextFieldRejestracjaHasloPowt.setBackground(new java.awt.Color(0, 204, 255));
-
         jButton1.setBackground(new java.awt.Color(0, 204, 255));
         jButton1.setText("Dodaj Pracownika");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -787,6 +783,10 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/obrazy/w3char6.png"))); // NOI18N
+
+        jTextFieldRejestracjaHaslo.setBackground(new java.awt.Color(0, 204, 255));
+
+        jTextFieldRejestracjaHasloPowt.setBackground(new java.awt.Color(0, 204, 255));
 
         javax.swing.GroupLayout jPanelRejestracjaPracownikaLayout = new javax.swing.GroupLayout(jPanelRejestracjaPracownika);
         jPanelRejestracjaPracownika.setLayout(jPanelRejestracjaPracownikaLayout);
@@ -803,10 +803,10 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldRejestracjaImie)
+                            .addComponent(jTextFieldRejestracjaImie, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(jTextFieldRejestracjaNazwisko)
                             .addComponent(jTextFieldRejestracjaHaslo)
-                            .addComponent(jTextFieldRejestracjaHasloPowt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                            .addComponent(jTextFieldRejestracjaHasloPowt)))
                     .addGroup(jPanelRejestracjaPracownikaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel19)
@@ -816,6 +816,8 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jPanelRejestracjaPracownikaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel8, jLabel9});
+
+        jPanelRejestracjaPracownikaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldRejestracjaHaslo, jTextFieldRejestracjaHasloPowt, jTextFieldRejestracjaImie, jTextFieldRejestracjaNazwisko});
 
         jPanelRejestracjaPracownikaLayout.setVerticalGroup(
             jPanelRejestracjaPracownikaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1738,13 +1740,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaHistoriaMiasta;
     private javax.swing.JTextArea jTextAreaInfoOSamolocie;
     private javax.swing.JTextField jTextFieldDD;
-    private javax.swing.JTextField jTextFieldHaslo;
+    private javax.swing.JPasswordField jTextFieldHaslo;
     private javax.swing.JTextField jTextFieldImieRejestracji;
     private javax.swing.JTextField jTextFieldMM;
     private javax.swing.JTextField jTextFieldNazwiskoRejestracji;
     private javax.swing.JTextField jTextFieldRRRR;
-    private javax.swing.JTextField jTextFieldRejestracjaHaslo;
-    private javax.swing.JTextField jTextFieldRejestracjaHasloPowt;
+    private javax.swing.JPasswordField jTextFieldRejestracjaHaslo;
+    private javax.swing.JPasswordField jTextFieldRejestracjaHasloPowt;
     private javax.swing.JTextField jTextFieldRejestracjaImie;
     private javax.swing.JTextField jTextFieldRejestracjaNazwisko;
     // End of variables declaration//GEN-END:variables

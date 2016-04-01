@@ -159,9 +159,9 @@
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBoxPracownik" min="-2" pref="173" max="-2" attributes="0"/>
-                              <Component id="jTextFieldHaslo" min="-2" pref="173" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jComboBoxPracownik" pref="173" max="32767" attributes="0"/>
+                              <Component id="jTextFieldHaslo" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -222,13 +222,6 @@
             <Property name="text" type="java.lang.String" value="Has&#x142;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldHaslo">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="33" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButtonZaloguj">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -249,6 +242,13 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/obrazy/employee.jpg"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jTextFieldHaslo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
@@ -1090,10 +1090,10 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldRejestracjaImie" max="32767" attributes="0"/>
-                              <Component id="jTextFieldRejestracjaNazwisko" max="32767" attributes="0"/>
-                              <Component id="jTextFieldRejestracjaHaslo" max="32767" attributes="0"/>
-                              <Component id="jTextFieldRejestracjaHasloPowt" pref="165" max="32767" attributes="0"/>
+                              <Component id="jTextFieldRejestracjaImie" linkSize="12" pref="165" max="32767" attributes="0"/>
+                              <Component id="jTextFieldRejestracjaNazwisko" linkSize="12" max="32767" attributes="0"/>
+                              <Component id="jTextFieldRejestracjaHaslo" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldRejestracjaHasloPowt" linkSize="12" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -1178,20 +1178,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldRejestracjaHaslo">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldRejestracjaHasloPowt">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1207,6 +1193,20 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/obrazy/w3char6.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jTextFieldRejestracjaHaslo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jTextFieldRejestracjaHasloPowt">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
