@@ -381,6 +381,24 @@ return (
         
         return miasto;
     }
+    
+    public Samolot getSamolot (Bilet _b) throws SQLException{
+        Samolot s = null;
+        List<Samolot> list = new ArrayList<Samolot>();
+        list = getAllSamoloty();
+        for(Samolot _s : list)
+        {
+            
+            if(_s.getId()==_b.getId_samolotu())
+            {s = _s;
+            //JOptionPane.showMessageDialog(null, miasto);
+            }
+            
+            
+        }
+        
+        return s;
+    }
 
    
     public void updateBilet(Bilet nowy_bilet) throws SQLException {
