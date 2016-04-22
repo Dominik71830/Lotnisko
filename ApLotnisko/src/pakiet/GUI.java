@@ -112,6 +112,7 @@ public class GUI extends javax.swing.JFrame {
         jButtonEdycja = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButtonPDF = new javax.swing.JButton();
+        PDFTablejButton3 = new javax.swing.JButton();
         jPanelRejestracja = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -374,6 +375,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        PDFTablejButton3.setBackground(new java.awt.Color(0, 153, 255));
+        PDFTablejButton3.setText("Wydrukuj tablicę");
+        PDFTablejButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PDFTablejButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBiletyLayout = new javax.swing.GroupLayout(jPanelBilety);
         jPanelBilety.setLayout(jPanelBiletyLayout);
         jPanelBiletyLayout.setHorizontalGroup(
@@ -385,11 +394,13 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelBiletyLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jButtonPowrotBiletow, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(jButtonEdycja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PDFTablejButton3)
+                            .addGroup(jPanelBiletyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addComponent(jButtonPowrotBiletow, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                .addComponent(jButtonEdycja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE))
         );
@@ -402,7 +413,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBiletyLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(20, 20, 20)
+                .addComponent(PDFTablejButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonEdycja)
@@ -410,7 +423,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jButtonPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonPowrotBiletow)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         jPanelBiletyLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButtonEdycja, jButtonPowrotBiletow});
@@ -1692,6 +1705,30 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonPDFActionPerformed
 
+    private void PDFTablejButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PDFTablejButton3ActionPerformed
+        // Drukowanie tablicy w pdfie
+        try{
+        ArrayList<Bilet> bilety = new ArrayList<>();
+        ArrayList<Miasto> miasta = new ArrayList<>();
+        ArrayList<Samolot> samoloty = new ArrayList<>();
+        bilety = (ArrayList<Bilet>) f.getAllBilety();
+        miasta = (ArrayList<Miasto>) f.getAllMiasta();
+        samoloty = (ArrayList<Samolot>) f.getAllSamoloty();
+        
+        PdfFiles pdffiles = new PdfFiles(bilety, miasta, samoloty);
+        
+        pdffiles.createTable();
+        
+        JOptionPane.showMessageDialog(null, "Utworzono");
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+    }//GEN-LAST:event_PDFTablejButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1747,6 +1784,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton PDFTablejButton3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;

@@ -8,6 +8,7 @@ package klasy;
 import java.io.FileOutputStream;
 import java.util.Date;
 
+import pakiet.*;
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -24,10 +25,19 @@ import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 
 public class PdfFiles {
-  private static String FILE = "C:/Users/Dominik/Lotnisko/Pliki PDF/FirstPdf.pdf";
+  private static String FILE = "C:/Users/Dominik/Lotnisko/Pliki PDF/BiletPdf.pdf";
+  private static String FILE2 = "C:/Users/Dominik/Lotnisko/Pliki PDF/TablePdf.pdf";
   private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
       Font.BOLD);
   private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -39,7 +49,13 @@ public class PdfFiles {
   private static Bilet b;
   private static Miasto m;
   private static Samolot s;
+  
+  private static ArrayList<Bilet> bilety;
+  private static ArrayList<Miasto> miasta;
+  private static ArrayList<Samolot> samoloty;
 
+  
+  
   
   
   public static void createPdf() {
@@ -73,8 +89,8 @@ public class PdfFiles {
         smallBold));
     preface.add(new Paragraph("Data wystawienia biletu: " + b.getData_wystawienia_biletu(),
         smallBold));
-    preface.add(new Paragraph("Data lotu: " + b.getData_lotu(),
-        smallBold));
+    //preface.add(new Paragraph("Data lotu: " + b.getData_lotu(),
+       // smallBold));
     preface.add(new Paragraph("Cel podróży: " + m.getNazwa(),
         smallBold));
     preface.add(new Paragraph("Cena: " + m.getCena(),
@@ -118,7 +134,7 @@ public class PdfFiles {
     subCatPart.add(paragraph);
 
     // add a table
-    createTable(subCatPart);
+    //createTable(subCatPart);
 
     // now add all this to the document
     document.add(catPart);
@@ -139,36 +155,86 @@ public class PdfFiles {
 
   }
 
-  private static void createTable(Section subCatPart)
-      throws BadElementException {
-    PdfPTable table = new PdfPTable(3);
+  public static void createTable(){
+      try{
+    Document document = new Document();
+    PdfWriter.getInstance(document, new FileOutputStream(FILE2));
+    document.open();
+    PdfPTable table = new PdfPTable(8);
+    
+   
 
-    // t.setBorderColor(BaseColor.GRAY);
-    // t.setPadding(4);
-    // t.setSpacing(4);
-    // t.setBorderWidth(1);
-
-    PdfPCell c1 = new PdfPCell(new Phrase("Table Header 1"));
+    
+    PdfPCell c1 = new PdfPCell(new Phrase("Imię pasazera"));
     c1.setHorizontalAlignment(Element.ALIGN_CENTER);
     table.addCell(c1);
 
-    c1 = new PdfPCell(new Phrase("Table Header 2"));
+    c1 = new PdfPCell(new Phrase("Nazwisko pasazera"));
     c1.setHorizontalAlignment(Element.ALIGN_CENTER);
     table.addCell(c1);
 
-    c1 = new PdfPCell(new Phrase("Table Header 3"));
+    c1 = new PdfPCell(new Phrase("Data lotu"));
     c1.setHorizontalAlignment(Element.ALIGN_CENTER);
     table.addCell(c1);
-    table.setHeaderRows(1);
+    
+    c1 = new PdfPCell(new Phrase("Data wystawienia biletu"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    
+    c1 = new PdfPCell(new Phrase("Cel podrozy: "));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    
+    c1 = new PdfPCell(new Phrase("Cena: "));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    
+    c1 = new PdfPCell(new Phrase("Model samolotu: "));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    
+    c1 = new PdfPCell(new Phrase("Nr lotu: "));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    
+    Functions f = new Functions();
+     
+    
+    for(Bilet b : bilety){
+        Miasto m = f.getMiasto(b);
+        Samolot s = f.getSamolot(b);
+        
+        table.addCell(b.getImie_pasazera());
+        table.addCell(b.getNazwisko_pasazera());
+        table.addCell(b.getData_lotu());
+        table.addCell(b.getData_wystawienia_biletu());
+        table.addCell(m.getNazwa());
+        table.addCell(Double.toString(m.getCena()));
+        table.addCell(s.getModel());
+        table.addCell(s.getNr_samolotu());
+        //JOptionPane.showMessageDialog(null, b);
+        
+    }
+     Paragraph preface = new Paragraph();
+    preface.add(table);
+    
+     
+          document.add(preface);
+          document.close();
+  
+    
+    
+    
+    
+    
+      addEmptyLine(preface, 30);
+    preface.add(new Paragraph("Wygenerowano: "   + new Date(), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        smallBold));
 
-    table.addCell("1.0");
-    table.addCell("1.1");
-    table.addCell("1.2");
-    table.addCell("2.1");
-    table.addCell("2.2");
-    table.addCell("2.3");
-
-    subCatPart.add(table);
+      }
+      catch(Exception e){
+          JOptionPane.showMessageDialog(null, e);
+      }
 
   }
 
@@ -191,4 +257,13 @@ public class PdfFiles {
         this.m = m;
         this.s = s; 
    }
+
+    public PdfFiles(ArrayList<Bilet> bilety,ArrayList<Miasto> miasta, ArrayList<Samolot> samoloty) {
+      this.bilety = bilety;
+      this.miasta = miasta;
+      this.samoloty = samoloty;
+      
+    }
+    
+    
 } 
