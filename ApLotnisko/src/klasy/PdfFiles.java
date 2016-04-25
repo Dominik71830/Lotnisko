@@ -165,7 +165,7 @@ public class PdfFiles {
    
 
     
-    PdfPCell c1 = new PdfPCell(new Phrase("Imię pasazera"));
+    PdfPCell c1 = new PdfPCell(new Phrase("Imie pasazera"));
     c1.setHorizontalAlignment(Element.ALIGN_CENTER);
     table.addCell(c1);
 
