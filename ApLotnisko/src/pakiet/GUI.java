@@ -53,6 +53,9 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         f = new Functions();
+        
+        jMenuItem2.setEnabled(false);
+        
         jPanelWitajacy.setVisible(true);
         jPanelLogowanie.setVisible(false);
         jPanelGlowny.setVisible(false);
@@ -1000,6 +1003,7 @@ public class GUI extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
                 this.setTitle("Panel główny");
                 
+                jMenuItem2.setEnabled(true);
                 
                 this.setTitle("Zalogowano na konto "+p);
                 
@@ -1029,6 +1033,8 @@ public class GUI extends javax.swing.JFrame {
         
         jPanelWitajacy.setVisible(false);
         
+        
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -1040,6 +1046,13 @@ public class GUI extends javax.swing.JFrame {
         jPanelBilety.setVisible(false);
         jPanelRejestracja.setVisible(false);
         jPanelMapa.setVisible(false);
+        
+        this.setSize(350, 270);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Logowanie");
+        
+        jMenuItem2.setEnabled(false);
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
